@@ -90,3 +90,20 @@ title: "Sea clash staged by Ukraine, says Putin"
 url: "http://www.bbc.co.uk/news/world-europe-46370619"
 urlToImage: "https://ichef.bbci.co.uk/images/ic/1024x576/p06swhnz.jpg"
 */
+
+//testing the hamburger menu button, very broken atm
+function showList() {
+  console.log("link item clicked");
+  let list = document.getElementById("filters");
+  if (list.classList.contains("d-none")) {
+    list.classList.remove("d-none");
+    list.classList.remove("col-md-12");
+    list.classList.add("col-md-3");
+    list.classList.add("hoverList");
+  } else {
+    list.classList.remove("hoverList");
+    list.classList.remove("col-md-3");
+    list.classList.add("d-none");
+    list.classList.add("col-md-12");
+  }
+}

@@ -23,83 +23,168 @@
 
   <body>
     <div class="container-fluid" id="mainContainer">
-      <div class="row">
-        <!-- <div class="col-lg-1"><i class="fas fa-bars"></i></div> -->
-        <div class="col-lg-11" id="bigName">SKG News</div>
+      <div class="row" id="topRow">
+        <div class="col-lg-1 col-md-1 d-lg-none d-md-block ">
+          <a
+            href="#"
+            rel="noopener noreferrer"
+            id="menuButton"
+            onclick="showList();"
+            ><i class="fas fa-bars"></i
+          ></a>
+        </div>
+        <div class="col-lg-10 col-md-11" id="bigName">SKG News</div>
       </div>
 
       <div class="row">
-        <div
-          class=" col-lg-2 d-lg-block order-lg-1 col-md-12 d-none"
-          id="filters"
-        >
-          Filters
-          <div class="list-group" id="list-tab" role="tablist">
-            <a
-              class="list-group-item list-group-item-action active"
-              id="list-home-list"
-              data-toggle="list"
-              href="#list-home"
-              role="tab"
-              aria-controls="home"
-              >News</a
-            >
-            <a
-              class="list-group-item list-group-item-action"
-              id="list-profile-list"
-              data-toggle="list"
-              href="#list-profile"
-              role="tab"
-              aria-controls="profile"
-              >Sport</a
-            >
-            <a
-              class="list-group-item list-group-item-action"
-              id="list-messages-list"
-              data-toggle="list"
-              href="#list-messages"
-              role="tab"
-              aria-controls="messages"
-              >Tech</a
-            >
-            <a
-              class="list-group-item list-group-item-action"
-              id="list-settings-list"
-              data-toggle="list"
-              href="#list-settings"
-              role="tab"
-              aria-controls="settings"
-              >Business</a
-            >
-            <a
-              class="list-group-item list-group-item-action"
-              id="list-settings-list"
-              data-toggle="list"
-              href="#list-settings"
-              role="tab"
-              aria-controls="settings"
-              >Health</a
-            >
-            <a
-              class="list-group-item list-group-item-action"
-              id="list-settings-list"
-              data-toggle="list"
-              href="#list-settings"
-              role="tab"
-              aria-controls="settings"
-              >Entertainment</a
-            >
-            <a
-              class="list-group-item list-group-item-action"
-              id="list-settings-list"
-              data-toggle="list"
-              href="#list-settings"
-              role="tab"
-              aria-controls="settings"
-              >Local</a
-            >
+        <nav class="col-md-2 d-md-block sidebar">
+          <div
+            class="col-lg-12 d-lg-block order-lg-1 col-md-12 d-none"
+            id="filters"
+          >
+            Filters
+            <div class="list-group" id="list-tab" role="tablist">
+              <a
+                class="list-group-item list-group-item-action active"
+                id="list-home-list"
+                data-toggle="list"
+                href="#list-home"
+                role="tab"
+                aria-controls="home"
+                >News</a
+              >
+              <a
+                class="list-group-item list-group-item-action"
+                id="list-profile-list"
+                data-toggle="list"
+                href="#list-profile"
+                role="tab"
+                aria-controls="profile"
+                >Sport</a
+              >
+              <a
+                class="list-group-item list-group-item-action"
+                id="list-messages-list"
+                data-toggle="list"
+                href="#list-messages"
+                role="tab"
+                aria-controls="messages"
+                >Tech</a
+              >
+              <a
+                class="list-group-item list-group-item-action"
+                id="list-business-list"
+                data-toggle="list"
+                href="#list-settings"
+                role="tab"
+                aria-controls="business"
+                >Business</a
+              >
+              <a
+                class="list-group-item list-group-item-action"
+                id="list-health-list"
+                data-toggle="list"
+                href="#list-health"
+                role="tab"
+                aria-controls="health"
+                >Health</a
+              >
+              <a
+                class="list-group-item list-group-item-action"
+                id="list-entertainment-list"
+                data-toggle="list"
+                href="#list-entertainment"
+                role="tab"
+                aria-controls="entertainment"
+                >Entertainment</a
+              >
+              <a
+                class="list-group-item list-group-item-action"
+                id="list-local-list"
+                data-toggle="list"
+                href="#list-local"
+                role="tab"
+                aria-controls="local"
+                >Local</a
+              >
+            </div>
           </div>
-        </div>
+        </nav>
+
+        <!---->
+        <!--
+          <div
+            class=" col-lg-2 d-lg-block order-lg-1 col-md-12 d-none"
+            id="filters"
+          >
+            Filters
+            <div class="list-group" id="list-tab" role="tablist">
+              <a
+                class="list-group-item list-group-item-action active"
+                id="list-home-list"
+                data-toggle="list"
+                href="#list-home"
+                role="tab"
+                aria-controls="home"
+                >News</a
+              >
+              <a
+                class="list-group-item list-group-item-action"
+                id="list-profile-list"
+                data-toggle="list"
+                href="#list-profile"
+                role="tab"
+                aria-controls="profile"
+                >Sport</a
+              >
+              <a
+                class="list-group-item list-group-item-action"
+                id="list-messages-list"
+                data-toggle="list"
+                href="#list-messages"
+                role="tab"
+                aria-controls="messages"
+                >Tech</a
+              >
+              <a
+                class="list-group-item list-group-item-action"
+                id="list-settings-list"
+                data-toggle="list"
+                href="#list-settings"
+                role="tab"
+                aria-controls="settings"
+                >Business</a
+              >
+              <a
+                class="list-group-item list-group-item-action"
+                id="list-settings-list"
+                data-toggle="list"
+                href="#list-settings"
+                role="tab"
+                aria-controls="settings"
+                >Health</a
+              >
+              <a
+                class="list-group-item list-group-item-action"
+                id="list-settings-list"
+                data-toggle="list"
+                href="#list-settings"
+                role="tab"
+                aria-controls="settings"
+                >Entertainment</a
+              >
+              <a
+                class="list-group-item list-group-item-action"
+                id="list-settings-list"
+                data-toggle="list"
+                href="#list-settings"
+                role="tab"
+                aria-controls="settings"
+                >Local</a
+              >
+            </div>
+          </div>
+        -->
 
         <div id="headlines" class="col-lg-6 order-lg-2 col-md-12 ">
           Headlines

@@ -13,12 +13,27 @@ body {
 #bigName {
   font-size: 2em;
 }
+#topRow {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
 #headlines {
   padding: 1em;
 }
 #headlines > * {
-  padding: 0.1em;
+  padding: 0.4em;
   margin: 0.1em;
+}
+
+.hoverList {
+  position: fixed;
+  top: 4em;
+  left: 0;
+  background: lightgray;
+  z-index: 99;
 }
 
 #cards {

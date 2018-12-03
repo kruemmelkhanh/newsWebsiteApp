@@ -1,0 +1,43 @@
+body {
+  background: white;
+  color: black;
+  overflow-x: hidden;
+}
+
+.container-fluid {
+  margin-top: 1em;
+}
+.fa-bars {
+  font-size: 2em;
+}
+#bigName {
+  font-size: 2em;
+}
+#headlines {
+  padding: 1em;
+}
+#headlines > * {
+  padding: 0.1em;
+  margin: 0.1em;
+}
+
+#cards {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+#filters {
+  padding: 1em;
+}
+#weather {
+  padding: 1em;
+}
+#cards {
+  padding: 1em;
+}
+#testBox {
+  height: 400px;
+  width: auto;
+  background: lightgrey;
+}

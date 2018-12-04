@@ -4,64 +4,74 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <script
+      src="http://code.jquery.com/jquery-3.3.1.js"
+      integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+      crossorigin="anonymous"
+    ></script>
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.5.0/css/all.css"
+      integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU"
+      crossorigin="anonymous"
+    />
     <link
       rel="stylesheet"
       href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
       integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
       crossorigin="anonymous"
     />
+    <link rel="stylesheet" href="meh.css" />
+
     <title>Document</title>
   </head>
-  <body>
-    <div class="container" id="mainContainer">
-      <div class="row list-group" id="miniRow"></div>
-      <div class="row" id="mainRow" style="margin-top: 3em">
-        <!--
-          <div class="col-md-4">
-            <div class="card mb-4 shadow-sm">
-              <img
-                class="card-img-top"
-                src="https://via.placeholder.com/300x200"
-                alt="Card image cap"
-              />
-              <div class="card-body">
-                <strong class="d-inline-block mb-2 text-primary">World</strong>
-                <div class="mb-1 text-muted">Nov 12</div>
-                <p class="card-text">
-                  This is a wider card with supporting text below as a natural
-                  lead-in to additional content. This content is a little bit
-                  longer.
-                </p>
-                <div class="d-flex justify-content-between align-items-center">
-                  <a href="#">Continue reading</a>
-                  <small class="text-muted"></small>
-                </div>
-              </div>
-            </div>
-          </div>
 
-            <div class="col-md-6">
-              <div class="card flex-md-row mb-4 shadow-sm h-md-250">
-                <div class="card-body d-flex flex-column align-items-start">
-                  <strong class="d-inline-block mb-2 text-primary">World</strong>
-                  <h3 class="mb-0">
-                    <a class="text-dark" href="#">Featured post</a>
-                  </h3>
-                  <div class="mb-1 text-muted">Nov 12</div>
-                  <p class="card-text mb-auto">
-                    This is a wider card with supporting text below as a natural
-                    lead-in to additional content.
-                  </p>
-                  <a href="#">Continue reading</a>
-                </div>
-                <img
-                  class="card-img-right flex-auto d-none d-lg-block"
-                  src="http://www.facetheforce.today/random/200?r=1"
-                  alt="Card image cap"
-                />
-              </div>
-            </div>
-        -->
+  <body>
+    <div class="container-fluid" id="mainContainer">
+      <div class="row" id="topRow">
+        <div class="col-1" id="menuButtonDiv">
+          <a href="#" rel="noopener noreferrer" id="menuButton"
+            ><!--
+              -onclick="openSideBar();"
+              >
+            --><i class="fas fa-bars" id="hamburgerMenu"></i
+          ></a>
+        </div>
+        <div class="col-11" id="bigName">SKG News</div>
+      </div>
+
+      <div class="row">
+        <div class="w3-sidebar" style="display:block" id="mySideBar">
+          <div class="listItem">
+            <a href="#" target="_blank" class="listItemLinkActive">Local</a>
+          </div>
+          <div class="listItem"><a href="#" class="listItemLink">World</a></div>
+          <div class="listItem">
+            <a href="#" class="listItemLink">Sports</a>
+          </div>
+          <div class="listItem">
+            <a href="#" class="listItemLink">Business</a>
+          </div>
+          <div class="listItem"><a href="#" class="listItemLink">Tech</a></div>
+          <div class="listItem">
+            <a href="#" class="listItemLink">Entertainment</a>
+          </div>
+          <div class="listItem">
+            <a href="#" class="listItemLink">Health</a>
+          </div>
+        </div>
+        <div id="headlines" class="col-lg-6 offset-lg-2 col-md-12 ">
+          Headlines
+        </div>
+
+        <div id="weather" class="col-lg-4 d-lg-block d-none">
+          Weather
+          <div id="testBox"></div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div id="cards" class="col-lg-6 offset-lg-2 col-md-12 col-sm-12 "></div>
       </div>
     </div>
     <script src="main.js"></script>

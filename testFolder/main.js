@@ -1,39 +1,47 @@
-$(document).ready(function() {
+$(document).ready(function () {
   // Handler for .ready() called.
 
   let key = "c90d69bab6e84e39ac36904e19c7fbdd";
   let url =
     "https://newsapi.org/v2/top-headlines?sources=bbc-news&apiKey=c90d69bab6e84e39ac36904e19c7fbdd";
   // https://newsapi.org/v2/top-headlines?sources=bbc-news&apiKey=c90d69bab6e84e39ac36904e19c7fbdd
-  const getNews = async function(url) {
+  const getNews = async function (url) {
     let raw = await fetch(url);
     let data = await raw.json();
     let mainRow = document.getElementById("cards");
     let miniRow = document.getElementById("headlines");
 
+    // dealing with the date
+    let currentDate = new Date();
+    let currentTime = currentDate.getTime()
+    //console.log(currentTime + " is date")
+
     if (data.status === "ok") {
       //console.log(data.articles);
 
-      let summaries = data.articles.map(function(item) {
+      let summaries = data.articles.map(function (item) {
+        let articleDate = new Date(item.publishedAt)
+        let articleTime = articleDate.getTime()
+        let hoursAgo = calculateHoursAgo(currentTime, articleTime)
+        //console.log(hoursAgo)
         return (item = `
-      <a href="${
-        item.url
-      }" target="_blank"  class="list-group-item list-group-item-action flex-column align-items-start">
-      <div class="d-flex w-100 justify-content-between">
-        <strong><h3 class="mb-1">${item.title}</h3></strong>
-        <small>${item.publishedAt.slice(0, 10)}</small>
-      </div>
-      <p class="mb-1">${item.description}</p>
-      <!--<small>${item.author}</small>-->
-    </a>`);
+        <div class="newsHeadlineCard">
+          <div class="newsHeadlineCardText">
+            <a href="#${item.url}">
+              <h3 class="CardTextHeadine">${item.title}</h3>
+            </a>
+            <p>${hoursAgo}</p>
+          </div>
+        </div>
+        `);
       });
 
-      let headlines = data.articles.map(function(item) {
+      let headlines = data.articles.map(function (item) {
         if (!item.urlToImage) {
           item.urlToImage =
             "https://dummyimage.com/300x200/000/010105&text=No+image+provided.";
         }
-        return (item = `<div class="col-4">
+        return (item = `<div class="col-4" id="${item.url}">
                         <div class="card mb-4 shadow-sm">
                           <img
                             class="card-img-top"
@@ -78,6 +86,27 @@ $(document).ready(function() {
       console.log("There was an error.");
     }
     //console.log(data);
+
+    function calculateHoursAgo(currentTime, articleTime) {
+
+      let hourNumber = Math.round((currentTime - articleTime) / 3600000);
+
+      if (hourNumber < 1) {
+        let minuteNumber = Math.round((currentTime - articleTime) / 60000)
+        if (minuteNumber === 1) {
+          return "1 minute ago"
+        } else {
+          return `${minuteNumber} minutes ago`
+        }
+      } else if (hourNumber === 1) {
+        return "1 hour ago"
+      } else {
+        return `${hourNumber} hours ago`
+      }
+
+    }
+
+
   };
 
   getNews(url);
@@ -107,12 +136,12 @@ function openSideBar() {
     sideBar.style.display = "none";
   }
 }*/
-  $("#menuButton").click(function() {
+  $("#menuButton").click(function () {
     console.log("button clicked");
     $("#mySideBar").toggle();
   });
 
-  $(document).click(function(e) {
+  $(document).click(function (e) {
     let sideMenuButton = $("#hamburgerMenu");
     console.log(e.target.id);
     let sideBar = $("#mySideBar");

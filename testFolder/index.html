@@ -1,94 +1,100 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <script
-      src="http://code.jquery.com/jquery-3.3.1.js"
-      integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
-      crossorigin="anonymous"
-    ></script>
-    <link
-      rel="stylesheet"
-      href="https://use.fontawesome.com/releases/v5.5.0/css/all.css"
-      integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU"
-      crossorigin="anonymous"
-    />
-    <link
-      rel="stylesheet"
-      href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
-      integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
-      crossorigin="anonymous"
-    />
-    <link rel="stylesheet" href="meh.css" />
 
-    <title>Document</title>
-  </head>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <script src="http://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+    crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU"
+    crossorigin="anonymous" />
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+    crossorigin="anonymous" />
+  <link rel="stylesheet" href="meh.css" />
 
-  <body>
-    <div class="container-fluid" id="mainContainer">
-      <div class="row" id="topRow">
-        <div class="col-1" id="menuButtonDiv">
-          <a href="#" rel="noopener noreferrer" id="menuButton"
-            ><!--
+  <title>Document</title>
+</head>
+
+<body>
+  <div class="container-fluid" id="mainContainer">
+    <div class="row" id="topRow">
+      <div class="col-1" id="menuButtonDiv">
+        <a href="#" rel="noopener noreferrer" id="menuButton">
+          <!--
               -onclick="openSideBar();"
               >
-            --><i class="fas fa-bars" id="hamburgerMenu"></i
-          ></a>
-        </div>
-        <div class="col-11" id="bigName">SKG News</div>
+            --><i class="fas fa-bars" id="hamburgerMenu"></i></a>
       </div>
+      <div class="col-11" id="bigName">SKG News</div>
+    </div>
 
-      <div class="row">
-        <div class="w3-sidebar" style="display:block" id="mySideBar">
-          <div class="listItem">
-            <a href="#" target="_blank" class="listItemLinkActive">Local</a>
-          </div>
-          <div class="listItem"><a href="#" class="listItemLink">World</a></div>
-          <div class="listItem">
-            <a href="#" class="listItemLink">Sports</a>
-          </div>
-          <div class="listItem">
-            <a href="#" class="listItemLink">Business</a>
-          </div>
-          <div class="listItem"><a href="#" class="listItemLink">Tech</a></div>
-          <div class="listItem">
-            <a href="#" class="listItemLink">Entertainment</a>
-          </div>
-          <div class="listItem">
-            <a href="#" class="listItemLink">Health</a>
-          </div>
+    <div class="row">
+      <!--SIDEBAR-->
+      <div class="w3-sidebar" style="display:block" id="mySideBar">
+        <div class="listItem">
+          <a href="#" target="_blank" class="listItemLinkActive">Local</a>
         </div>
-        <div id="headlines" class="col-lg-6 offset-lg-2 col-md-12 ">
-          Headlines
+        <div class="listItem"><a href="#" class="listItemLink">World</a></div>
+        <div class="listItem">
+          <a href="#" class="listItemLink">Sports</a>
         </div>
-
-        <div id="weather" class="col-lg-4 d-lg-block d-none">
-          Weather
-          <div id="testBox"></div>
+        <div class="listItem">
+          <a href="#" class="listItemLink">Business</a>
+        </div>
+        <div class="listItem"><a href="#" class="listItemLink">Tech</a></div>
+        <div class="listItem">
+          <a href="#" class="listItemLink">Entertainment</a>
+        </div>
+        <div class="listItem">
+          <a href="#" class="listItemLink">Health</a>
         </div>
       </div>
-
-      <div class="row">
-        <div id="cards" class="col-lg-6 offset-lg-2 col-md-12 col-sm-12 "></div>
+      <!--HEADLINES-->
+      <div id="headlines" class="col-lg-6 offset-lg-2 col-md-12 ">
+        Headlines
+        <!--
+        <div class="newsHeadlineCard">
+          <div class="newsHeadlineCardText">
+            <a href="#">
+              <h3 class="CardTextHeadine">Giuliani's Twitter typo used to abuse President Trump</h3>
+            </a>
+            <p>3 hours ago</p>
+          </div>
+        </div>
+        -->
+      </div>
+      <!--WEATHER-->
+      <div id="weather" class="col-lg-4 d-lg-block d-none">
+        Weather
+        <div id="testBox"></div>
       </div>
     </div>
-    <script src="main.js"></script>
-    <script
-      src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-      integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-      crossorigin="anonymous"
-    ></script>
-    <script
-      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
-      integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
-      crossorigin="anonymous"
-    ></script>
-    <script
-      src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
-      integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
-      crossorigin="anonymous"
-    ></script>
-  </body>
+
+    <div class="row">
+      <!--NEWS CARDS-->
+      <div id="cards" class="col-lg-6 offset-lg-2 col-md-12 col-sm-12 ">
+        <div class="newsCard">
+          <div class="newsCardText">
+            <a href="#">
+              <h3 class="CardTextHeadine">Giuliani's Twitter typo used to abuse President Trump</h3>
+            </a>
+            <p>3 hours ago</p>
+          </div>
+          <div class="newsCardImage">
+            <img src="https://dummyimage.com/300x200/000/010105&text=No+image+provided." alt="test">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="main.js"></script>
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+    crossorigin="anonymous"></script>
+</body>
+
 </html>

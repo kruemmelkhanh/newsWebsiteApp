@@ -78,14 +78,14 @@ $(document).ready(function() {
 
   $(document).click(function(e) {
     let sideMenuButton = $("#hamburgerMenu");
-    //console.log(e.target.id);
+    let sideBarItemClass = $(e.target)
+      .attr("class")
+      .includes("sideBarItem");
     let sideBar = $("#mySideBar");
-    //console.log(sideBar[0].id);
-    let sideBarID = sideBar[0].id;
     let sideMenuButtonID = sideMenuButton[0].id;
 
-    if (sideBarID !== e.target.id && sideMenuButtonID !== e.target.id) {
-      //console.log("if ran");
+    if (!sideBarItemClass && sideMenuButtonID !== e.target.id) {
+      console.log("if ran");
       sideBar.hide();
     }
   });

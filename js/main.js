@@ -1,85 +1,78 @@
-let key = "c90d69bab6e84e39ac36904e19c7fbdd";
-let url =
-  "https://newsapi.org/v2/top-headlines?sources=bbc-news&apiKey=c90d69bab6e84e39ac36904e19c7fbdd";
-// https://newsapi.org/v2/top-headlines?sources=bbc-news&apiKey=c90d69bab6e84e39ac36904e19c7fbdd
-const getNews = async function(url) {
-  let raw = await fetch(url);
-  let data = await raw.json();
-  let mainRow = document.getElementById("cards");
-  let miniRow = document.getElementById("headlines");
+$(document).ready(function() {
+  let pretzels = "c90d69bab6e84e39ac36904e19c7fbdd";
+  let newsSource = "sources=bbc-news";
+  let url = `https://newsapi.org/v2/top-headlines?${newsSource}&apiKey=${pretzels}`;
 
-  if (data.status === "ok") {
-    console.log(data.articles);
+  const getNews = async function(url) {
+    let raw = await fetch(url);
+    let data = await raw.json();
+    //let mainRow = document.getElementById("cards");
+    let miniRow = document.getElementById("headlines");
 
-    let summaries = data.articles.map(function(item) {
-      return (item = `
-      <a href="${
-        item.url
-      }" target="_blank"  class="list-group-item list-group-item-action flex-column align-items-start">
-      <div class="d-flex w-100 justify-content-between">
-        <strong><h3 class="mb-1">${item.title}</h3></strong>
-        <small>${item.publishedAt.slice(0, 10)}</small>
-      </div>
-      <p class="mb-1">${item.description}</p>
-      <!--<small>${item.author}</small>-->
-    </a>`);
-    });
+    // dealing with the date
+    let currentDate = new Date();
+    let currentTime = currentDate.getTime();
+    //console.log(currentTime + " is date")
 
-    let headlines = data.articles.map(function(item) {
-      if (!item.urlToImage) {
-        item.urlToImage =
-          "https://dummyimage.com/300x200/000/010105&text=No+image+provided.";
+    if (data.status === "ok") {
+      //console.log(data.articles);
+
+      let summaries = data.articles.map(function(item) {
+        let articleDate = new Date(item.publishedAt);
+        let articleTime = articleDate.getTime();
+        let hoursAgo = calculateHoursAgo(currentTime, articleTime);
+
+        return (item = `
+        <div class="newsCard">
+            <div class="newsCardText">
+              <a href="${item.url}" target="_blank">
+                <h3 class="cardTextHeadline">
+                ${item.title}
+                </h3>
+              </a>
+              <p>
+              ${item.description}
+              </p>
+              <p class="cardTimeStamp">${hoursAgo}</p>
+            </div>
+            <div class="newsCardImage">
+              <img
+                src="${item.urlToImage}"
+                alt="${item.title}"
+              />
+            </div>
+          </div>`);
+      });
+
+      summaries.forEach(element => {
+        miniRow.innerHTML += element;
+      });
+    } else {
+      console.log("There was an error.");
+    }
+    //console.log(data);
+
+    function calculateHoursAgo(currentTime, articleTime) {
+      let hourNumber = Math.round((currentTime - articleTime) / 3600000);
+
+      if (hourNumber < 1) {
+        let minuteNumber = Math.round((currentTime - articleTime) / 60000);
+        if (minuteNumber === 1) {
+          return "1 minute ago";
+        } else {
+          return `${minuteNumber} minutes ago`;
+        }
+      } else if (hourNumber === 1) {
+        return "1 hour ago";
+      } else {
+        return `${hourNumber} hours ago`;
       }
-      return (item = `<div class="col-4">
-                        <div class="card mb-4 shadow-sm">
-                          <img
-                            class="card-img-top"
-                            src="${item.urlToImage}"
-                            alt="Card image cap"
-                            height="200" width="auto"
-                          />
-                        <div class="card-body">
-                          <strong class="d-inline-block mb-2 text-primary">${
-                            item.author
-                          }</strong>
-                          <h3 class="mb-0">
-                            <p class="text-dark">${item.title}</p>
-                          </h3>
-                        <div class="mb-1 text-muted">${item.publishedAt.slice(
-                          0,
-                          10
-                        )}</div>
-                          <p class="card-text">
-                          ${item.description}
-                          </p>
-                        <div class="d-flex justify-content-between align-items-center">
-                            <a href="${
-                              item.url
-                            }" target="_blank">Continue reading</a>
-                            <small class="text-muted"></small>
-                        </div>
-                        </div>
-                      </div>
-                    </div>`);
-    });
-    console.log(headlines);
+    }
+  };
 
-    headlines.forEach(element => {
-      mainRow.innerHTML += element;
-    });
+  getNews(url);
 
-    summaries.forEach(element => {
-      miniRow.innerHTML += element;
-    });
-  } else {
-    console.log("There was an error.");
-  }
-  //console.log(data);
-};
-
-getNews(url);
-
-/*
+  /*
 0:
 author: "BBC News"
 content: "Media caption Footage of the collision was posted by the Ukrainian interior minister Russian President Vladimir Putin has accused Ukraine's leader, Petro Poroshenko, of trying to boost his ratings ahead of 2019 elections with a naval confrontation off Crimea.… [+298 chars]"
@@ -91,19 +84,22 @@ url: "http://www.bbc.co.uk/news/world-europe-46370619"
 urlToImage: "https://ichef.bbci.co.uk/images/ic/1024x576/p06swhnz.jpg"
 */
 
-//testing the hamburger menu button, very broken atm
-function showList() {
-  console.log("link item clicked");
-  let list = document.getElementById("filters");
-  if (list.classList.contains("d-none")) {
-    list.classList.remove("d-none");
-    list.classList.remove("col-md-12");
-    list.classList.add("col-md-3");
-    list.classList.add("hoverList");
-  } else {
-    list.classList.remove("hoverList");
-    list.classList.remove("col-md-3");
-    list.classList.add("d-none");
-    list.classList.add("col-md-12");
-  }
-}
+  $("#menuButton").click(function() {
+    //console.log("button clicked");
+    $("#mySideBar").toggle();
+  });
+
+  $(document).click(function(e) {
+    let sideMenuButton = $("#hamburgerMenu");
+    //console.log(e.target.id);
+    let sideBar = $("#mySideBar");
+    //console.log(sideBar[0].id);
+    let sideBarID = sideBar[0].id;
+    let sideMenuButtonID = sideMenuButton[0].id;
+
+    if (sideBarID !== e.target.id && sideMenuButtonID !== e.target.id) {
+      //console.log("if ran");
+      sideBar.hide();
+    }
+  });
+});

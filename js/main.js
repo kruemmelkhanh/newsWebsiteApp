@@ -6,8 +6,7 @@ $(document).ready(function() {
   const getNews = async function(url) {
     let raw = await fetch(url);
     let data = await raw.json();
-    //let mainRow = document.getElementById("cards");
-    let miniRow = document.getElementById("headlines");
+    let newsCards = document.getElementById("headlines");
 
     // dealing with the date
     let currentDate = new Date();
@@ -45,7 +44,7 @@ $(document).ready(function() {
       });
 
       summaries.forEach(element => {
-        miniRow.innerHTML += element;
+        newsCards.innerHTML += element;
       });
     } else {
       console.log("There was an error.");
@@ -72,18 +71,6 @@ $(document).ready(function() {
 
   getNews(url);
 
-  /*
-0:
-author: "BBC News"
-content: "Media caption Footage of the collision was posted by the Ukrainian interior minister Russian President Vladimir Putin has accused Ukraine's leader, Petro Poroshenko, of trying to boost his ratings ahead of 2019 elections with a naval confrontation off Crimea.… [+298 chars]"
-description: "Russia's president accuses Ukraine of orchestrating a naval confrontation off Crimea."
-publishedAt: "2018-11-28T12:31:25Z"
-source: {id: "bbc-news", name: "BBC News"}
-title: "Sea clash staged by Ukraine, says Putin"
-url: "http://www.bbc.co.uk/news/world-europe-46370619"
-urlToImage: "https://ichef.bbci.co.uk/images/ic/1024x576/p06swhnz.jpg"
-*/
-
   $("#menuButton").click(function() {
     //console.log("button clicked");
     $("#mySideBar").toggle();
@@ -102,4 +89,63 @@ urlToImage: "https://ichef.bbci.co.uk/images/ic/1024x576/p06swhnz.jpg"
       sideBar.hide();
     }
   });
+
+  $(".sideBarItem").click(function(e) {
+    $("#headlines").html("");
+
+    $("#mySideBar .listItem")
+      .find(".listItemLinkActive")
+      .removeClass("listItemLinkActive");
+
+    if ($(this).hasClass("listItemLinkActive")) {
+      $(this).removeClass("listItemLinkActive");
+    } else {
+      $(this).addClass("listItemLinkActive");
+    }
+
+    let clickedSource = e.target.innerHTML;
+    if (clickedSource === "World") {
+      newsSource = "sources=bbc-news";
+      url = `https://newsapi.org/v2/top-headlines?${newsSource}&apiKey=${pretzels}`;
+      getNews(url);
+    } else if (clickedSource === "Sports") {
+      newsSource = "sources=bbc-sport";
+      url = `https://newsapi.org/v2/top-headlines?${newsSource}&apiKey=${pretzels}`;
+      getNews(url);
+    } else if (clickedSource === "Business") {
+      newsSource = "sources=the-wall-street-journal";
+      url = `https://newsapi.org/v2/top-headlines?${newsSource}&apiKey=${pretzels}`;
+      getNews(url);
+    } else if (clickedSource === "Tech") {
+      newsSource = "sources=wired";
+      url = `https://newsapi.org/v2/top-headlines?${newsSource}&apiKey=${pretzels}`;
+      getNews(url);
+    } else if (clickedSource === "Entertainment") {
+      newsSource = "sources=entertainment-weekly";
+      url = `https://newsapi.org/v2/top-headlines?${newsSource}&apiKey=${pretzels}`;
+      getNews(url);
+    } else if (clickedSource === "Health") {
+      newsSource = "sources=medical-news-today";
+      url = `https://newsapi.org/v2/top-headlines?${newsSource}&apiKey=${pretzels}`;
+      getNews(url);
+    } else if (clickedSource === "Local") {
+      newsSource = "sources=die-zeit";
+      url = `https://newsapi.org/v2/top-headlines?${newsSource}&apiKey=${pretzels}`;
+      getNews(url);
+    } else {
+      console.log("Something is wrong.");
+    }
+  });
 });
+
+/*
+0:
+author: "BBC News"
+content: "Media caption Footage of the collision was posted by the Ukrainian interior minister Russian President Vladimir Putin has accused Ukraine's leader, Petro Poroshenko, of trying to boost his ratings ahead of 2019 elections with a naval confrontation off Crimea.… [+298 chars]"
+description: "Russia's president accuses Ukraine of orchestrating a naval confrontation off Crimea."
+publishedAt: "2018-11-28T12:31:25Z"
+source: {id: "bbc-news", name: "BBC News"}
+title: "Sea clash staged by Ukraine, says Putin"
+url: "http://www.bbc.co.uk/news/world-europe-46370619"
+urlToImage: "https://ichef.bbci.co.uk/images/ic/1024x576/p06swhnz.jpg"
+*/

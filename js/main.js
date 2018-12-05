@@ -1,14 +1,16 @@
 $(document).ready(function() {
+  /* our pretzel and default source and url */
   let pretzels = "c90d69bab6e84e39ac36904e19c7fbdd";
   let newsSource = "sources=bbc-news";
   let url = `https://newsapi.org/v2/top-headlines?${newsSource}&apiKey=${pretzels}`;
 
+  /* getting the news from the api with a url parameter */
   const getNews = async function(url) {
     let raw = await fetch(url);
     let data = await raw.json();
     let newsCards = document.getElementById("headlines");
 
-    // dealing with the date
+    // dealing with the current date
     let currentDate = new Date();
     let currentTime = currentDate.getTime();
     //console.log(currentTime + " is date")
@@ -51,6 +53,7 @@ $(document).ready(function() {
     }
     //console.log(data);
 
+    /* calculating post time here */
     function calculateHoursAgo(currentTime, articleTime) {
       let hourNumber = Math.round((currentTime - articleTime) / 3600000);
 
@@ -71,35 +74,48 @@ $(document).ready(function() {
 
   getNews(url);
 
+  /* sidebar code to show or hide the sidebar */
+
   $("#menuButton").click(function() {
     //console.log("button clicked");
     $("#mySideBar").toggle();
   });
 
+  /* sidebar code to hide the sidebar when clicked on somewhere other than the sidebar or the hamburger icon */
+
   $(document).click(function(e) {
     let sideMenuButton = $("#hamburgerMenu");
-    //console.log(e.target.id);
+    let sideBarItemClass = $(e.target).attr("class");
     let sideBar = $("#mySideBar");
-    //console.log(sideBar[0].id);
-    let sideBarID = sideBar[0].id;
     let sideMenuButtonID = sideMenuButton[0].id;
-
-    if (sideBarID !== e.target.id && sideMenuButtonID !== e.target.id) {
-      //console.log("if ran");
-      sideBar.hide();
+    if (sideBarItemClass) {
+      if (
+        !sideBarItemClass.includes("sideBarItem") &&
+        sideMenuButtonID !== e.target.id
+      ) {
+        console.log("if ran");
+        sideBar.hide();
+      }
+    } else {
+      //console.log("no class");
     }
   });
+
+  /* sidebar code to change the active button, and the displayed news source */
 
   $(".sideBarItem").click(function(e) {
     $("#headlines").html("");
 
     $("#mySideBar .listItem")
       .find(".listItemLinkActive")
-      .removeClass("listItemLinkActive");
+      .removeClass("listItemLinkActive")
+      .addClass("listItemLink");
 
     if ($(this).hasClass("listItemLinkActive")) {
       $(this).removeClass("listItemLinkActive");
+      $(this).addClass("listItemLink");
     } else {
+      $(this).removeClass("listItemLink");
       $(this).addClass("listItemLinkActive");
     }
 
@@ -136,9 +152,24 @@ $(document).ready(function() {
       console.log("Something is wrong.");
     }
   });
+
+  $(window)
+    .on("resize", function() {
+      let windowWidth = $(window).width();
+      //console.log(windowWidth);
+
+      if (windowWidth < 992) {
+        //console.log("if resize");
+        $("#mySideBar").hide();
+      } else if (windowWidth >= 992) {
+        //console.log("else resize");
+        $("#mySideBar").show();
+      }
+    })
+    .resize();
 });
 
-/*
+/* this is a sample object
 0:
 author: "BBC News"
 content: "Media caption Footage of the collision was posted by the Ukrainian interior minister Russian President Vladimir Putin has accused Ukraine's leader, Petro Poroshenko, of trying to boost his ratings ahead of 2019 elections with a naval confrontation off Crimea.… [+298 chars]"

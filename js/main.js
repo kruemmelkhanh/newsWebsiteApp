@@ -26,7 +26,7 @@ $(document).ready(function() {
         return (item = `
         <div class="newsCard">
             <div class="newsCardText">
-              <a href="${item.url}" target="_blank">
+              <a href="${item.url}" target="_blank" class="headlineLink">
                 <h3 class="cardTextHeadline">
                 ${item.title}
                 </h3>
@@ -34,9 +34,19 @@ $(document).ready(function() {
               <p>
               ${item.description}
               </p>
+              <div class="thirdRow">
               <p class="cardTimeStamp">${hoursAgo}</p>
+              <span class="shareContainer">
+              <a href="mailto:?subject=Check out this article&amp;body=${
+                item.url
+              }" title="Send in E-mail" class="shareEmail"><i class="far fa-envelope"></i></a>
+              <a class="shareTwitter" href="https://twitter.com/intent/tweet?text=Check out this article ${
+                item.url
+              }" target="_blank" title="Tweet This"><i class="fab fa-twitter"></i></a>
+            </span>
             </div>
-            <div class="newsCardImage">
+            </div>
+            <div class="newsCardImage d-none d-lg-block d-md-block">
               <img
                 src="${item.urlToImage}"
                 alt="${item.title}"
@@ -105,6 +115,8 @@ $(document).ready(function() {
 
   $(".sideBarItem").click(function(e) {
     $("#headlines").html("");
+    let topInfoIcon = $("#topInfoSectionIcon");
+    let topInfoText = $("#topInfoSectionText");
 
     $("#mySideBar .listItem")
       .find(".listItemLinkActive")
@@ -122,30 +134,44 @@ $(document).ready(function() {
     let clickedSource = e.target.innerHTML;
     if (clickedSource === "World") {
       newsSource = "sources=bbc-news";
+      topInfoText.text("World");
+      topInfoIcon.attr("class", "fas fa-globe-americas");
       url = `https://newsapi.org/v2/top-headlines?${newsSource}&apiKey=${pretzels}`;
       getNews(url);
     } else if (clickedSource === "Sports") {
       newsSource = "sources=bbc-sport";
+      topInfoText.text("Sports");
+      topInfoIcon.attr("class", "fas fa-basketball-ball");
       url = `https://newsapi.org/v2/top-headlines?${newsSource}&apiKey=${pretzels}`;
       getNews(url);
     } else if (clickedSource === "Business") {
       newsSource = "sources=the-wall-street-journal";
+      topInfoText.text("Business");
+      topInfoIcon.attr("class", "fas fa-chart-bar");
       url = `https://newsapi.org/v2/top-headlines?${newsSource}&apiKey=${pretzels}`;
       getNews(url);
     } else if (clickedSource === "Tech") {
       newsSource = "sources=wired";
+      topInfoText.text("Tech");
+      topInfoIcon.attr("class", "fas fa-microchip");
       url = `https://newsapi.org/v2/top-headlines?${newsSource}&apiKey=${pretzels}`;
       getNews(url);
     } else if (clickedSource === "Entertainment") {
       newsSource = "sources=entertainment-weekly";
+      topInfoText.text("Entertainment");
+      topInfoIcon.attr("class", "fas fa-theater-masks");
       url = `https://newsapi.org/v2/top-headlines?${newsSource}&apiKey=${pretzels}`;
       getNews(url);
     } else if (clickedSource === "Health") {
       newsSource = "sources=medical-news-today";
+      topInfoText.text("Health");
+      topInfoIcon.attr("class", "fas fa-heartbeat");
       url = `https://newsapi.org/v2/top-headlines?${newsSource}&apiKey=${pretzels}`;
       getNews(url);
     } else if (clickedSource === "Local") {
       newsSource = "sources=die-zeit";
+      topInfoText.text("Local");
+      topInfoIcon.attr("class", "fas fa-map-marker-alt");
       url = `https://newsapi.org/v2/top-headlines?${newsSource}&apiKey=${pretzels}`;
       getNews(url);
     } else {

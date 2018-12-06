@@ -36,7 +36,7 @@ $(document).ready(function() {
               </p>
               <p class="cardTimeStamp">${hoursAgo}</p>
             </div>
-            <div class="newsCardImage">
+            <div class="newsCardImage d-none d-lg-block d-md-block">
               <img
                 src="${item.urlToImage}"
                 alt="${item.title}"

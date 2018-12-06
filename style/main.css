@@ -1,3 +1,29 @@
+/* general stuff */
+body {
+  background: white;
+  color: black;
+  box-sizing: border-box;
+}
+
+#middleRow {
+  margin-top: 2em;
+}
+
+#middleColumn div {
+  margin: 0.4em;
+}
+
+#weather {
+  padding: 1em;
+}
+
+#testBox {
+  height: 400px;
+  width: auto;
+  border: 1px solid rgba(0, 0, 0, 0.18);
+}
+/* general stuff over */
+
 /* sidebar */
 .sidebar {
   height: auto;
@@ -16,6 +42,10 @@
   box-shadow: 2px 2px 14px -2px rgba(0, 0, 0, 0.18);
   border-top-right-radius: 1em;
   border-bottom-right-radius: 1em;
+}
+
+#hamburgerMenu {
+  font-size: 2em;
 }
 
 .listItem {
@@ -63,6 +93,13 @@
 
 /* sidebar over */
 
+/* top info section */
+.topInfoSection {
+  background: pink;
+}
+
+/* top info section over */
+
 /* news cards */
 .newsCard {
   display: flex;
@@ -77,18 +114,25 @@
 
 .newsCardText {
   display: flex;
-  flex-flow: column wrap;
+  flex-flow: column nowrap;
   padding: 0;
   margin: 0;
   line-height: 100%;
 }
 
-.newsCardText a {
+.thirdRow {
+  display: flex;
+  flex-flow: row wrap;
+  align-items: center;
+  min-height: 2em;
+}
+
+.newsCardText .headlineLink {
   text-decoration: none;
   color: black;
 }
 
-.newsCardText a:hover {
+.newsCardText .headlineLink:hover {
   text-decoration: none;
   color: lightseagreen;
 }
@@ -115,42 +159,51 @@ p {
   font-size: 0.8em;
 }
 
-/* news cards over*/
+/** news card share buttons container **/
 
-body {
-  background: white;
-  color: black;
-  box-sizing: border-box;
+.newsCard:hover .shareEmail {
+  opacity: 1;
+}
+.newsCard:hover .shareTwitter {
+  opacity: 1;
 }
 
-#menuButtonDiv {
-  height: auto;
+.shareContainer {
+  padding-left: 1em;
+}
+
+.shareEmail,
+.shareTwitter {
+  display: inline-block;
+  opacity: 0;
+  transition-property: opacity;
+  transition-duration: 0.4s;
+  transition-timing-function: linear;
   text-decoration: none;
-  /* background: pink; */
-}
-
-#menuButton {
-  text-decoration: none;
   color: black;
-  /* background: green; */
-  width: fit-content;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  font-size: 0.8em;
+  padding-left: 0.2em;
+  padding-right: 0.2em;
 }
 
-#menuButton:hover {
+.shareEmail:hover {
   text-decoration: none;
   color: lightseagreen;
 }
+
+.shareTwitter:hover {
+  text-decoration: none;
+  color: #1dcaff;
+}
+
+/** news card share buttons container over **/
+/* news cards over*/
 
 .container-fluid {
   margin-top: 1em;
 }
 
-.fa-bars {
-  font-size: 2em;
-}
+/* top bar/row */
 
 #bigName {
   font-size: 2em;
@@ -162,45 +215,47 @@ body {
   justify-content: center;
   align-items: center;
   text-align: center;
+  -webkit-box-shadow: 0px 3px 3px 0px rgba(0, 0, 0, 0.28);
+  -moz-box-shadow: 0px 3px 3px 0px rgba(0, 0, 0, 0.28);
+  box-shadow: 0px 3px 3px 0px rgba(0, 0, 0, 0.28);
+  padding-bottom: 1em;
 }
 
-#middleRow {
-  margin-top: 2em;
+#menuButtonDiv {
+  height: auto;
+  text-decoration: none;
 }
 
-#headlines div {
-  margin: 0.4em;
-}
-
-.hoverList {
-  position: fixed;
-  top: 4em;
-  left: 0;
-  background: lightgray;
-  z-index: 99;
-}
-
-#cards {
+#menuButton {
+  text-decoration: none;
+  color: black;
+  width: fit-content;
   display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  background: greenyellow;
+  justify-content: center;
+  align-items: center;
 }
 
-#filters {
-  padding: 1em;
+#menuButton:hover {
+  text-decoration: none;
+  color: lightseagreen;
+}
+/* top bar/row over */
+
+/* middle row */
+#topInfoSection {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: flex-start;
+  align-items: center;
+  min-height: 4em;
 }
 
-#weather {
-  padding: 1em;
+#topInfoSectionText {
+  font-size: 2em;
+  font-weight: 700;
 }
-
-#cards {
-  padding: 1em;
-}
-
-#testBox {
-  height: 400px;
-  width: auto;
-  background: lightgrey;
+#topInfoSectionIcon {
+  padding-right: 1em;
+  font-size: 2em;
+  color: lightseagreen;
 }

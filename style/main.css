@@ -2,65 +2,65 @@
 /* sidebar */
 
 .sidebar {
-  height: auto;
-  width: 16%;
-  min-width: 200px;
-  background-color: white;
-  position: fixed;
-  top: 6em;
-  z-index: 99;
-  overflow: auto;
-  display: flex;
-  flex-direction: column;
-  border-collapse: collapse;
-  -webkit-box-shadow: 2px 2px 14px -2px rgba(0, 0, 0, 0.18);
-  -moz-box-shadow: 2px 2px 14px -2px rgba(0, 0, 0, 0.18);
-  box-shadow: 2px 2px 14px -2px rgba(0, 0, 0, 0.18);
-  border-top-right-radius: 1em;
-  border-bottom-right-radius: 1em;
+    height: auto;
+    width: 16%;
+    min-width: 200px;
+    background-color: white;
+    position: fixed;
+    top: 6em;
+    z-index: 99;
+    overflow: auto;
+    display: flex;
+    flex-direction: column;
+    border-collapse: collapse;
+    -webkit-box-shadow: 2px 2px 14px -2px rgba(0, 0, 0, 0.18);
+    -moz-box-shadow: 2px 2px 14px -2px rgba(0, 0, 0, 0.18);
+    box-shadow: 2px 2px 14px -2px rgba(0, 0, 0, 0.18);
+    border-top-right-radius: 1em;
+    border-bottom-right-radius: 1em;
 }
 
 .listItem {
-  width: 100%;
-  height: auto;
-  text-align: left;
-  border-collapse: collapse;
-  font-weight: bold;
+    width: 100%;
+    height: auto;
+    text-align: left;
+    border-collapse: collapse;
+    font-weight: bold;
 }
 
 .listItemLink {
-  text-decoration: none;
-  color: black;
-  height: 3em;
-  width: inherit;
-  background: transparent;
-  display: flex;
-  justify-content: left;
-  align-items: center;
-  padding-left: 2em;
+    text-decoration: none;
+    color: black;
+    height: 3em;
+    width: inherit;
+    background: transparent;
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    padding-left: 2em;
 }
 
 .listItemLinkActive {
-  text-decoration: none;
-  background: lightblue;
-  color: whitesmoke;
-  text-decoration: none;
-  height: 3em;
-  width: inherit;
-  display: flex;
-  justify-content: left;
-  align-items: center;
-  padding-left: 2em;
+    text-decoration: none;
+    background: lightblue;
+    color: whitesmoke;
+    text-decoration: none;
+    height: 3em;
+    width: inherit;
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    padding-left: 2em;
 }
 
 .listItemLinkActive:hover {
-  text-decoration: none;
-  color: rgb(2, 22, 2);
+    text-decoration: none;
+    color: rgb(2, 22, 2);
 }
 
 .listItemLink:hover {
-  text-decoration: none;
-  color: lightseagreen;
+    text-decoration: none;
+    color: lightseagreen;
 }
 
 /* sidebar over */
@@ -68,137 +68,137 @@
 /* news cards */
 
 .newsCard {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 0.2em;
-  margin: 0.2em;
-  -webkit-box-shadow: 2px 2px 14px -2px rgba(0, 0, 0, 0.18);
-  -moz-box-shadow: 2px 2px 14px -2px rgba(0, 0, 0, 0.18);
-  box-shadow: 2px 2px 14px -2px rgba(0, 0, 0, 0.18);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.2em;
+    margin: 0.2em;
+    -webkit-box-shadow: 2px 2px 14px -2px rgba(0, 0, 0, 0.18);
+    -moz-box-shadow: 2px 2px 14px -2px rgba(0, 0, 0, 0.18);
+    box-shadow: 2px 2px 14px -2px rgba(0, 0, 0, 0.18);
 }
 
 .newsCardText {
-  display: flex;
-  flex-flow: column wrap;
-  padding: 0;
-  margin: 0;
-  line-height: 100%;
+    display: flex;
+    flex-flow: column wrap;
+    padding: 0;
+    margin: 0;
+    line-height: 100%;
 }
 
 .newsCardText a {
-  text-decoration: none;
-  color: black;
+    text-decoration: none;
+    color: black;
 }
 
 .newsCardText a:hover {
-  text-decoration: none;
-  color: lightseagreen;
+    text-decoration: none;
+    color: lightseagreen;
 }
 
 .newsCardText h3,
 p {
-  margin: 0.1em;
+    margin: 0.1em;
 }
 
 .newsCardImage {
-  align-self: center;
-  padding: 0;
-  margin: 0;
-  height: 100px;
-  width: 150px;
+    align-self: center;
+    padding: 0;
+    margin: 0;
+    height: 100px;
+    width: 150px;
 }
 
 .newsCardImage img {
-  height: 100%;
-  width: 150px;
-  border: 0.1em solid lightseagreen;
+    height: 100%;
+    width: 150px;
+    border: 0.1em solid lightseagreen;
 }
 
 .cardTimeStamp {
-  font-size: 0.8em;
+    font-size: 0.8em;
 }
 
 /* news cards over*/
 
 body {
-  background: white;
-  color: black;
-  box-sizing: border-box;
+    background: white;
+    color: black;
+    box-sizing: border-box;
 }
 
 #menuButtonDiv {
-  height: auto;
-  text-decoration: none;
-  /* background: pink; */
+    height: auto;
+    text-decoration: none;
+    /* background: pink; */
 }
 
 #menuButton {
-  text-decoration: none;
-  color: black;
-  /* background: green; */
-  width: fit-content;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+    text-decoration: none;
+    color: black;
+    /* background: green; */
+    width: fit-content;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 #menuButton:hover {
-  text-decoration: none;
-  color: lightseagreen;
+    text-decoration: none;
+    color: lightseagreen;
 }
 
 .container-fluid {
-  margin-top: 1em;
+    margin-top: 1em;
 }
 
 .fa-bars {
-  font-size: 2em;
+    font-size: 2em;
 }
 
 #bigName {
-  font-size: 2em;
+    font-size: 2em;
 }
 
 #topRow {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
 }
 
 #middleRow {
-  margin-top: 2em;
+    margin-top: 2em;
 }
 
 #headlines div {
-  margin: 0.4em;
+    margin: 0.4em;
 }
 
 .hoverList {
-  position: fixed;
-  top: 4em;
-  left: 0;
-  background: lightgray;
-  z-index: 99;
+    position: fixed;
+    top: 4em;
+    left: 0;
+    background: lightgray;
+    z-index: 99;
 }
 
 #cards {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  background: greenyellow;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    background: greenyellow;
 }
 
 #filters {
-  padding: 1em;
+    padding: 1em;
 }
 
 #weather {
-  padding: 1em;
+    padding: 1em;
 }
 
 #cards {
-  padding: 1em;
+    padding: 1em;
 }

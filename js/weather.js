@@ -3,6 +3,8 @@ var cityName = document.getElementById("cityName");
 var description = document.getElementById("description");
 var temperature = document.getElementById("temperature");
 var icon = document.getElementById("weatherIcon");
+var todayMax = document.getElementById("todayMax");
+var todayMin = document.getElementById("todayMin");
 
 function getLocation() {
   if (navigator.geolocation) {
@@ -17,6 +19,7 @@ function getLocation() {
     let userLong = position.coords.longitude;
     // console.log(userLat);
     getWeather(userLat, userLong);
+    getForecast(userLat, userLong);
   }
 }
 
@@ -26,26 +29,20 @@ async function getWeather(userLat, userLong) {
   var myURL = `https://api.openweathermap.org/data/2.5/weather?lat=${userLat}&lon=${userLong}&APPID=${key}&units=metric`;
   let raw = await fetch(myURL);
   let data = await raw.json();
+  console.log(data);
   let iconScr =
-    "http://openweathermap.org/img/w/" + data.weather[0].icon + ".png";
+    "https://openweathermap.org/img/w/" + data.weather[0].icon + ".png";
   cityName.innerHTML = data.name;
   description.innerHTML = data.weather[0].description;
-  temperature.innerHTML = data.main.temp + "° c";
+  temperature.innerHTML = data.main.temp.toFixed(1) + "° c";
   icon.setAttribute("src", iconScr);
 }
 
-//  api.openweathermap.org/data/2.5/weather?q={city name}&APPID={APIKEY}
-
-/* base: "stations"
-clouds: {all: 0}
-cod: 200
-coord: {lon: 13.39, lat: 52.52}
-dt: 1543501200
-id: 2950159
-main: {temp: 3, pressure: 1020, humidity: 44, temp_min: 3, temp_max: 3}
-name: "Berlin"
-sys: {type: 1, id: 1275, message: 0.002, country: "DE", sunrise: 1543474334, …}
-visibility: 10000
-weather: Array(1)
-0: {id: 800, main: "Clear", description: "clear sky", icon: "01d"}
-length: 1*/
+async function getForecast(userLat, userLong) {
+  var myURL = `https://api.openweathermap.org/data/2.5/forecast/daily?lat=${userLat}&lon=${userLong}&cnt=3&APPID=${key}&units=metric`;
+  let raw = await fetch(myURL);
+  let data = await raw.json();
+  console.log(data);
+  todayMax.innerHTML = "↑ " + data.list[0].temp.max.toFixed(1);
+  todayMin.innerHTML = "↓ " + data.list[0].temp.min.toFixed(1);
+}

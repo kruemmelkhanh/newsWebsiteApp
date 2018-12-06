@@ -3,10 +3,12 @@ body {
   background: white;
   color: black;
   box-sizing: border-box;
+  min-height: 100vh;
 }
 
 #middleRow {
   margin-top: 2em;
+  min-height: 1200px;
 }
 
 #middleColumn div {
@@ -70,7 +72,7 @@ body {
 
 .listItemLinkActive {
   text-decoration: none;
-  background: lightblue;
+  background: lightseagreen;
   color: whitesmoke;
   text-decoration: none;
   height: 3em;
@@ -258,4 +260,19 @@ p {
   padding-right: 1em;
   font-size: 2em;
   color: lightseagreen;
+}
+
+/* footer */
+footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 4em;
+  background: rgba(32, 178, 170, 0.3);
+  -webkit-box-shadow: 0px 3px 3px 0px rgba(0, 0, 0, 0.28);
+  -moz-box-shadow: 0px 3px 3px 0px rgba(0, 0, 0, 0.28);
+  box-shadow: 5px 3px 3px 5px rgba(0, 0, 0, 0.28);
+  margin-top: 2em;
+  font-weight: 500;
+  color: lightslategray;
 }

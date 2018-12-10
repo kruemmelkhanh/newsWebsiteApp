@@ -103,7 +103,7 @@ $(document).ready(function() {
         !sideBarItemClass.includes("sideBarItem") &&
         sideMenuButtonID !== e.target.id
       ) {
-        console.log("if ran");
+        //console.log("if ran");
         sideBar.hide();
       }
     } else {

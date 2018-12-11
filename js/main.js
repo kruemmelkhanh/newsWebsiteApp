@@ -31,7 +31,7 @@ $(document).ready(function() {
                 ${item.title}
                 </h3>
               </a>
-              <p>
+              <p class="cardTextDescription">
               ${item.description}
               </p>
               <div class="thirdRow">
@@ -50,7 +50,7 @@ $(document).ready(function() {
               <img
                 src="${item.urlToImage}"
                 alt="${item.title}"
-                onerror="this.src='/img/logo.png'"
+                onerror="this.src='/img/missing.png'"
               />
             </div>
           </div>`);

@@ -1,10 +1,16 @@
 @import url("weather.css");
 /* general stuff */
+:root {
+  --primary-color: #0f0959;
+  --secondary-color: #d68e43;
+}
+
 body {
   background: white;
   color: black;
   box-sizing: border-box;
   min-height: 100vh;
+  font-family: "Work Sans", sans-serif;
 }
 
 #mainContainer {
@@ -12,7 +18,8 @@ body {
 }
 
 #middleRow {
-  margin-top: 7em;
+  margin-top: 5em;
+  margin-bottom: 20%;
   min-height: 1200px;
 }
 
@@ -22,9 +29,7 @@ body {
 
 #weather {
   padding: 1em;
-  position: -webkit-sticky;
-  position: sticky;
-  top: 0;
+  /* margin-top: 3.8em; */
 }
 
 #testBox {
@@ -43,17 +48,20 @@ body {
   min-width: 200px;
   background-color: white;
   position: fixed;
-  top: 6em;
+  top: 4em;
   left: -16%;
   z-index: 1;
   overflow: auto;
   display: flex;
   flex-direction: column;
-  transition: 1s;
+  transition: 0.5s;
   -webkit-box-shadow: 0px 0px 14px -2px rgba(0, 0, 0, 0.6);
   -moz-box-shadow: 0px 0px 14px -2px rgba(0, 0, 0, 0.6);
   box-shadow: 0px 0px 14px -2px rgba(0, 0, 0, 0.6);
   font-family: "Poppins", sans-serif;
+}
+#mySideBar {
+  padding-top: 2em;
 }
 
 .sidebarActive {
@@ -86,7 +94,7 @@ body {
 
 .listItemLinkActive {
   text-decoration: none;
-  background: lightseagreen;
+  background: var(--primary-color);
   color: whitesmoke;
   text-decoration: none;
   height: 3em;
@@ -99,12 +107,12 @@ body {
 
 .listItemLinkActive:hover {
   text-decoration: none;
-  color: rgb(2, 22, 2);
+  color: var(--secondary-color);
 }
 
 .listItemLink:hover {
   text-decoration: none;
-  color: lightseagreen;
+  color: var(--secondary-color);
 }
 
 /* sidebar over */
@@ -135,7 +143,6 @@ body {
   padding: 0;
   margin: 0;
   line-height: 100%;
-  font-family: "Poppins", sans-serif;
 }
 
 .thirdRow {
@@ -145,6 +152,13 @@ body {
   min-height: 2em;
 }
 
+.newsCardText h3 {
+  font-weight: 600;
+}
+.cardTextDescription {
+  font-weight: 300;
+}
+
 .newsCardText .headlineLink {
   text-decoration: none;
   color: black;
@@ -152,8 +166,7 @@ body {
 
 .newsCardText .headlineLink:hover {
   text-decoration: none;
-  color: lightseagreen;
-  text-decoration: underline;
+  color: var(--secondary-color);
 }
 
 .newsCardText h3,
@@ -172,12 +185,15 @@ p {
 .newsCardImage img {
   height: 100%;
   width: 150px;
-  border: 0.1em solid lightseagreen;
+  -webkit-box-shadow: 0px 0px 5px 2px rgba(0, 0, 0, 0.08);
+  -moz-box-shadow: 0px 0px 5px 2px rgba(0, 0, 0, 0.08);
+  box-shadow: 0px 0px 5px 2px rgba(0, 0, 0, 0.08);
 }
 
 .cardTimeStamp {
   font-size: 0.8em;
   color: gray;
+  font-weight: 300;
 }
 
 /** news card share buttons container **/
@@ -208,7 +224,7 @@ p {
 
 .shareEmail:hover {
   text-decoration: none;
-  color: lightseagreen;
+  color: var(--secondary-color);
 }
 
 .shareTwitter:hover {
@@ -227,7 +243,7 @@ p {
 
 #bigName {
   text-align: center;
-  height: 4em;
+  height: 2em;
 }
 
 #bigName img {
@@ -268,7 +284,7 @@ p {
 
 #menuButton:hover {
   text-decoration: none;
-  color: lightseagreen;
+  color: var(--secondary-color);
 }
 /* top bar/row over */
 
@@ -288,7 +304,7 @@ p {
 #topInfoSectionIcon {
   padding-right: 1em;
   font-size: 2em;
-  color: lightseagreen;
+  color: var(--primary-color);
 }
 
 /* footer */
@@ -299,7 +315,7 @@ footer {
   position: relative;
   z-index: 2;
   min-height: 4em;
-  background: rgb(105, 105, 105);
+  background: rgb(161, 168, 170);
   -webkit-box-shadow: 0px 3px 3px 0px rgba(0, 0, 0, 0.28);
   -moz-box-shadow: 0px 3px 3px 0px rgba(0, 0, 0, 0.28);
   box-shadow: 5px 3px 3px 5px rgba(0, 0, 0, 0.28);
@@ -318,7 +334,7 @@ footer a {
 
 footer a:hover {
   text-decoration: none;
-  color: lightseagreen;
+  color: var(--primary-color);
 }
 
 title {

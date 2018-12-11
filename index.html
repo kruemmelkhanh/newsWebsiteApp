@@ -21,8 +21,9 @@
       integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
       crossorigin="anonymous"
     />
+    <link href="https://fonts.googleapis.com/css?family=Work+Sans:300,400,600" rel="stylesheet">
     <link rel="stylesheet" href="./style/main.css" />
-    <link rel="shortcut icon" href="/img/icon.ico" />
+    <link rel="shortcut icon" href="/img/raven_rL5_icon.ico" />
     <title>SKG News</title>
   </head>
 
@@ -35,7 +36,7 @@
           ></a>
         </div>
         <div class="col-11" id="bigName">
-          <a href="index.html"><img src="/img/logo.png" alt="test"/></a>
+          <a href="index.html"><img src="/img/logo_new.png" alt="test"/></a>
         </div>
       </div>
 
@@ -44,26 +45,33 @@
         <div class="sidebar sidebarActive" id="mySideBar">
           <div class="listItem">
             <a href="#" class="sideBarItem listItemLinkActive" tag="world"
-              >World</a
+              ><i class="fas fa-globe-americas"></i
+                >&nbsp;&nbsp;World</a
             >
           </div>
           <div class="listItem">
-            <a href="#" class="sideBarItem listItemLink">Sports</a>
+            <a href="#" class="sideBarItem listItemLink"><i class="fas fa-basketball-ball"></i
+              >&nbsp;&nbsp;Sports</a>
           </div>
           <div class="listItem">
-            <a href="#" class="sideBarItem listItemLink">Business</a>
+            <a href="#" class="sideBarItem listItemLink"><i class="fas fa-chart-bar"></i
+              >&nbsp;&nbsp;Business</a>
           </div>
           <div class="listItem">
-            <a href="#" class="sideBarItem listItemLink">Tech</a>
+            <a href="#" class="sideBarItem listItemLink"><i class="fas fa-microchip"></i
+              >&nbsp;&nbsp;Tech</a>
           </div>
           <div class="listItem">
-            <a href="#" class="sideBarItem listItemLink">Entertainment</a>
+            <a href="#" class="sideBarItem listItemLink"><i class="fas fa-theater-masks"></i
+              >&nbsp;&nbsp;Entertainment</a>
           </div>
           <div class="listItem">
-            <a href="#" class="sideBarItem listItemLink">Health</a>
+            <a href="#" class="sideBarItem listItemLink"><i class="fas fa-heartbeat"></i
+              >&nbsp;&nbsp;Health</a>
           </div>
           <div class="listItem">
-            <a href="#" class="sideBarItem listItemLink">Local</a>
+            <a href="#" class="sideBarItem listItemLink"><i class="fas fa-map-marker-alt"></i
+              >&nbsp;&nbsp;Local</a>
           </div>
         </div>
         <!-- HEADLINES -->
@@ -81,6 +89,7 @@
           <div id="weatherBox">
             <div class="flex-item top">
               <div id="cityName"></div>
+              <div class="hrDiv"><hr></div>
             </div>
             <div class="flex-item middle">
               <div id="left">
@@ -90,15 +99,19 @@
                   <div id="todayMax"></div>
                   <div id="todayMin"></div>
                 </div>
-              </div id="right">
-                <div id="weatherIconContainer"><img id="weatherIcon" alt="" /></div>
+                </div>
+              <div id="right"><div id="weatherIconContainer"><img id="weatherIcon" alt="" height="100px" width="100px" /></div></div>
+              
             </div>
+            <div class="hrDiv"><hr></div>
             <div id="forecastBox" class="flex-item bottom">
             </div>
           </div>
+            
+          </div>
         </div>
       </div>
-    </div>
+    
     <!-- FOOTER -->
     <footer>
       <div id="document-footer-content">

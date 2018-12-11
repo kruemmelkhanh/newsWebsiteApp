@@ -14,7 +14,6 @@ var forecast5 = document.getElementById("forecast5");
 function getLocation() {
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(gotPosition);
-    // console.log("ĥello");
   } else {
     alert("Something is terribly wrong.");
   }
@@ -22,7 +21,6 @@ function getLocation() {
   function gotPosition(position) {
     let userLat = position.coords.latitude;
     let userLong = position.coords.longitude;
-    // console.log(userLat);
     getWeather(userLat, userLong);
     getForecast(userLat, userLong);
   }
@@ -34,11 +32,10 @@ async function getWeather(userLat, userLong) {
   var myURL = `https://api.openweathermap.org/data/2.5/weather?lat=${userLat}&lon=${userLong}&APPID=${key}&units=metric`;
   let raw = await fetch(myURL);
   let data = await raw.json();
-  console.log(data);
   let iconScr =
     "https://openweathermap.org/img/w/" + data.weather[0].icon + ".png";
   cityName.innerHTML = data.name;
-  description.innerHTML = data.weather[0].description;
+  description.innerHTML = "<p>" + data.weather[0].description + "</p>";
   temperature.innerHTML = data.main.temp.toFixed(1) + "° c";
   icon.setAttribute("src", iconScr);
 }
@@ -47,12 +44,33 @@ async function getForecast(userLat, userLong) {
   var myURL = `https://api.openweathermap.org/data/2.5/forecast/daily?lat=${userLat}&lon=${userLong}&cnt=6&APPID=${key}&units=metric`;
   let raw = await fetch(myURL);
   let data = await raw.json();
+  let today = new Date();
+  let day = today.getDay();
+  const dayOfTheWeek = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
+  todayMax.innerHTML = "↑ " + data.list[0].temp.max.toFixed(1) + "°";
+  todayMin.innerHTML = "↓ " + data.list[0].temp.min.toFixed(1) + "°";
+  let forecastBox = document.getElementById("forecastBox");
   // console.log(data);
-  todayMax.innerHTML = "↑ " + data.list[0].temp.max.toFixed(1);
-  todayMin.innerHTML = "↓ " + data.list[0].temp.min.toFixed(1);
-  forecast1.innerHTML = data.list[1].temp.max.toFixed(1);
-  forecast2.innerHTML = data.list[2].temp.max.toFixed(1);
-  forecast3.innerHTML = data.list[3].temp.max.toFixed(1);
-  forecast4.innerHTML = data.list[4].temp.max.toFixed(1);
-  forecast5.innerHTML = data.list[5].temp.max.toFixed(1);
+  for (let i = 1; i < 6; i++) {
+    let div = document.createElement("div");
+    div.classList.add("dailyForecast");
+    let dayIcon = document.createElement("img");
+    let dayName = document.createElement("p");
+    let dayMax = document.createElement("p");
+    let dayMin = document.createElement("p");
+    let iconScr =
+      "https://openweathermap.org/img/w/" +
+      data.list[i].weather[0].icon +
+      ".png";
+    dayIcon.setAttribute("src", iconScr);
+    dayName.innerHTML = dayOfTheWeek[(day + i) % 7];
+    dayMax.innerHTML = data.list[i].temp.max.toFixed(1) + "°";
+    dayMin.innerHTML = data.list[i].temp.min.toFixed(1) + "°";
+    // console.log(dayName, dayMax, dayMin);
+    div.appendChild(dayIcon);
+    div.appendChild(dayName);
+    div.appendChild(dayMax);
+    div.appendChild(dayMin);
+    forecastBox.appendChild(div);
+  }
 }

@@ -79,19 +79,22 @@
         <!-- WEATHER -->
         <div id="weather" class="col-lg-4 d-lg-block d-none">
           <div id="weatherBox">
-            <div id="cityName" class="grid-item weather-a"></div>
-            <div id="description" class="grid-item weather-b"></div>
-            <div id="temperature" class="grid-item weather-c"></div>
-            <div class="grid-item weather-d">
-              <img id="weatherIcon" alt="" />
+            <div class="flex-item top">
+              <div id="cityName"></div>
             </div>
-            <div id="todayMax" class="grid-item weather-e"></div>
-            <div id="todayMin" class="grid-item weather-f"></div>
-            <div id="forecast1" class="grid-item weather-g"></div>
-            <div id="forecast2" class="grid-item weather-h"></div>
-            <div id="forecast3" class="grid-item weather-i"></div>
-            <div id="forecast4" class="grid-item weather-j"></div>
-            <div id="forecast5" class="grid-item weather-k"></div>
+            <div class="flex-item middle">
+              <div id="left">
+                <div id="description"></div>
+                <div id="temperatures">
+                  <div id="temperature"></div>
+                  <div id="todayMax"></div>
+                  <div id="todayMin"></div>
+                </div>
+              </div id="right">
+                <div id="weatherIconContainer"><img id="weatherIcon" alt="" /></div>
+            </div>
+            <div id="forecastBox" class="flex-item bottom">
+            </div>
           </div>
         </div>
       </div>

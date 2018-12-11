@@ -50,7 +50,7 @@ async function getForecast(userLat, userLong) {
   todayMax.innerHTML = "↑ " + data.list[0].temp.max.toFixed(1) + "°";
   todayMin.innerHTML = "↓ " + data.list[0].temp.min.toFixed(1) + "°";
   let forecastBox = document.getElementById("forecastBox");
-  console.log(data);
+  // console.log(data);
   for (let i = 1; i < 6; i++) {
     let div = document.createElement("div");
     div.classList.add("dailyForecast");

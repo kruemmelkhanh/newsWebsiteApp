@@ -9,6 +9,7 @@
   box-shadow: 2px 2px 14px -2px rgba(0, 0, 0, 0.18);
   padding: 1em;
 }
+
 #weatherBox div {
   width: 100%;
 }
@@ -22,14 +23,19 @@
   display: flex;
   flex-flow: column wrap;
 }
+
 .middle {
   margin-top: 1em;
 }
 
 .hrDiv {
   height: 0.6em;
+  padding-top: 0.6em;
 }
+
 .hrDiv hr {
+  margin: 0;
+  padding: 0;
   width: 98%;
   background-color: rgba(192, 192, 192, 0.1);
   height: 1px;
@@ -37,7 +43,7 @@
 
 .bottom {
   margin-bottom: 0.5em;
-  margin-top: 2em;
+  margin-top: 1em;
 }
 
 .top,
@@ -46,6 +52,7 @@
   display: flex;
   justify-content: center;
 }
+
 .dailyForecast {
   width: 20%;
 }
@@ -54,6 +61,7 @@
   padding: 0;
   margin: 0 !important;
 }
+
 .dailyForecast img {
   height: 4em;
   padding: 0.5em;
@@ -62,6 +70,7 @@
 #todayMax,
 #todayMin {
   font-size: 90%;
+  text-align: center;
 }
 
 #cityName {
@@ -79,6 +88,7 @@
 
 #description p {
   margin-left: -0.1em;
+  font-size: 1.1em;
 }
 
 #temperature,
@@ -91,15 +101,27 @@
   flex-direction: row;
   flex-wrap: nowrap;
   align-items: flex-end;
+  margin-top: 0.6em;
 }
+
 .dayName {
   font-weight: 600;
+}
+
+.dayMin,
+.dayMax {
+  text-align: center;
+}
+
+.dayMin {
+  color: rgba(0, 0, 0, 0.40)
 }
 
 #weatherIconContainer {
   display: flex;
   justify-content: center;
 }
+
 #weatherIconContainer img {
   align-self: center;
 }
@@ -107,6 +129,7 @@
 #forecastBox {
   font-size: 85%;
 }
+
 #forecastBox div {
   text-align: center;
 }

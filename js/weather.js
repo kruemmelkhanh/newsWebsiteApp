@@ -1,10 +1,12 @@
-var key = "ccf31ad40fb6d05a1f40b2802a01eada";
+var donut = "ccf31ad40fb6d05a1f40b2802a01eada";
 var cityName = document.getElementById("cityName");
 var description = document.getElementById("description");
 var temperature = document.getElementById("temperature");
 var icon = document.getElementById("weatherIcon");
 var todayMax = document.getElementById("todayMax");
 var todayMin = document.getElementById("todayMin");
+
+/* custom png sets for openweathermap icons */
 
 const currentIconFinder = {
   "01d": "/img/weatherIcons/clear_day.png",
@@ -47,6 +49,8 @@ const forecastIconFinder = {
   "50n": "/img/weatherIcons/forecastIcons/mist.png"
 };
 
+/* getting location */
+
 function getLocation() {
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(gotPosition);
@@ -64,13 +68,20 @@ function getLocation() {
 
 getLocation();
 
+/* getting current weather */
+
 async function getWeather(userLat, userLong) {
-  var myURL = `https://api.openweathermap.org/data/2.5/weather?lat=${userLat}&lon=${userLong}&APPID=${key}&units=metric`;
+  var myURL = `https://api.openweathermap.org/data/2.5/weather?lat=${userLat}&lon=${userLong}&APPID=${donut}&units=metric`;
   let raw = await fetch(myURL);
   let data = await raw.json();
   let iconRaw = data.weather[0].icon;
   let iconScr = currentIconFinder[iconRaw];
-  cityName.innerHTML = data.name;
+  let cityNameData = data.name.split(" ")
+  if (cityNameData.length > 1) {
+    cityName.innerHTML = cityNameData[0];
+  } else {
+    cityName.innerHTML = data.name;
+  }
   let weatherRaw = data.weather[0].description.split(" ");
   let weatherDone = [];
   for (let word of weatherRaw) {
@@ -79,12 +90,14 @@ async function getWeather(userLat, userLong) {
   }
   weatherDone = weatherDone.join(" ");
   description.innerHTML = "<p>" + weatherDone + "</p>";
-  temperature.innerHTML = data.main.temp.toFixed(1) + "° c";
+  temperature.innerHTML = data.main.temp.toFixed(1) + " °C";
   icon.setAttribute("src", iconScr);
 }
 
+/* getting the forecast */
+
 async function getForecast(userLat, userLong) {
-  var myURL = `https://api.openweathermap.org/data/2.5/forecast/daily?lat=${userLat}&lon=${userLong}&cnt=6&APPID=${key}&units=metric`;
+  var myURL = `https://api.openweathermap.org/data/2.5/forecast/daily?lat=${userLat}&lon=${userLong}&cnt=6&APPID=${donut}&units=metric`;
   let raw = await fetch(myURL);
   let data = await raw.json();
   let today = new Date();
@@ -93,7 +106,6 @@ async function getForecast(userLat, userLong) {
   todayMax.innerHTML = "↑ " + data.list[0].temp.max.toFixed(1) + "°";
   todayMin.innerHTML = "↓ " + data.list[0].temp.min.toFixed(1) + "°";
   let forecastBox = document.getElementById("forecastBox");
-  // console.log(data);
   for (let i = 1; i < 6; i++) {
     let div = document.createElement("div");
     div.classList.add("dailyForecast");
@@ -101,14 +113,15 @@ async function getForecast(userLat, userLong) {
     let dayName = document.createElement("p");
     dayName.classList.add("dayName");
     let dayMax = document.createElement("p");
+    dayMax.classList.add("dayMax")
     let dayMin = document.createElement("p");
+    dayMin.classList.add("dayMin");
     let iconRaw = data.list[i].weather[0].icon;
     let iconScr = forecastIconFinder[iconRaw];
     dayIcon.setAttribute("src", iconScr);
     dayName.innerHTML = dayOfTheWeek[(day + i) % 7];
-    dayMax.innerHTML = data.list[i].temp.max.toFixed(1) + "°";
-    dayMin.innerHTML = data.list[i].temp.min.toFixed(1) + "°";
-    // console.log(dayName, dayMax, dayMin);
+    dayMax.innerHTML = " " + data.list[i].temp.max.toFixed() + "°";
+    dayMin.innerHTML = data.list[i].temp.min.toFixed() + "°";
     div.appendChild(dayName);
     div.appendChild(dayIcon);
     div.appendChild(dayMax);

@@ -30,21 +30,18 @@
     <div class="container-fluid" id="mainContainer">
       <div class="row" id="topRow">
         <div class="col-1" id="menuButtonDiv">
-          <a rel="noopener noreferrer" id="menuButton">
-            <!--
-              -onclick="openSideBar();"
-              >
-            --><i class="fas fa-bars" id="hamburgerMenu"></i
+          <a rel="noopener noreferrer" id="menuButton" class="menuButton">
+          <i class="fas fa-bars" id="hamburgerMenu"></i
           ></a>
         </div>
         <div class="col-11" id="bigName">
-          <img src="/img/logo.png" alt="test" />
+          <a href="index.html"><img src="/img/logo.png" alt="test"/></a>
         </div>
       </div>
 
       <div class="row" id="middleRow">
         <!-- SIDEBAR -->
-        <div class="sidebar" id="mySideBar">
+        <div class="sidebar sidebarActive" id="mySideBar">
           <div class="listItem">
             <a href="#" class="sideBarItem listItemLinkActive" tag="world"
               >World</a
@@ -98,26 +95,41 @@
           </div>
         </div>
       </div>
-      <!--
-        <div class="row">
-          NEWS CARDS
-          <div id="cards" class="col-lg-6 offset-lg-2 col-md-12 col-sm-12 ">
-            <div class="newsCard">
-              <div class="newsCardText">
-                <a href="#">
-                  <h3 class="CardTextHeadine">Giuliani's Twitter typo used to abuse President Trump</h3>
-                </a>
-                <p>3 hours ago</p>
-              </div>
-              <div class="newsCardImage">
-                <img src="https://dummyimage.com/300x200/000/010105&text=No+image+provided." alt="test">
-              </div>
-            </div>
-          </div>
-        </div>
-      -->
     </div>
-    <footer><p>&copy&nbspSGK News Network Corp Llc Ltd - 2018</p></footer>
+    <!-- FOOTER -->
+    <footer>
+      <div id="document-footer-content">
+        <p>
+          SKG News is part of SGK LLC, an international media group and leading
+          digital publisher. <a href="http://news.google.com" target="_blank"
+            >Visit our corporate site.</a></p>
+        <div id="footerLinks">
+          <a href="https://en.wikipedia.org/wiki/Apex_predator" target="_blank"
+            >About Us</a
+          >
+
+          <a href="https://wikileaks.org/" target="_blank"
+            >Terms and Conditions</a
+          >
+
+          <a
+            href="https://en.wikipedia.org/wiki/Wikipedia:Privacy_policy"
+            target="_blank"
+            >Privacy Policy</a
+          >
+
+          <a href="https://www.youtube.com/watch?v=I5e6ftNpGsU" target="_blank"
+            >Cookies Policy</a
+          >
+        </div>
+        <p>
+          &copy;
+          <span>
+            <span> <span>SKG Publishing Limited</span></span>. All rights reserved.
+        </p>
+      </div>
+    </footer>
+    <!-- SCRIPTS -->
     <script src="./js/main.js"></script>
     <script src="./js/weather.js"></script>
     <script

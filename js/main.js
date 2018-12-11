@@ -88,7 +88,7 @@ $(document).ready(function() {
 
   $("#menuButton").click(function() {
     //console.log("button clicked");
-    $("#mySideBar").toggle();
+    $("#mySideBar").toggleClass("sidebarActive");
   });
 
   /* sidebar code to hide the sidebar when clicked on somewhere other than the sidebar or the hamburger icon */
@@ -104,7 +104,7 @@ $(document).ready(function() {
         sideMenuButtonID !== e.target.id
       ) {
         //console.log("if ran");
-        sideBar.hide();
+        sideBar.removeClass("sidebarActive");
       }
     } else {
       //console.log("no class");

@@ -39,7 +39,7 @@ $(document).ready(function() {
               <span class="shareContainer">
               <a href="mailto:?subject=Check out this article&amp;body=${
                 item.url
-              }" title="Send in E-mail" class="shareEmail"><i class="far fa-envelope"></i></a>
+              }" title="Send via E-mail" class="shareEmail"><i class="far fa-envelope"></i></a>
               <a class="shareTwitter" href="https://twitter.com/intent/tweet?text=Check out this article ${
                 item.url
               }" target="_blank" title="Tweet This"><i class="fab fa-twitter"></i></a>
@@ -50,6 +50,7 @@ $(document).ready(function() {
               <img
                 src="${item.urlToImage}"
                 alt="${item.title}"
+                onerror="this.src='/img/logo.png'"
               />
             </div>
           </div>`);

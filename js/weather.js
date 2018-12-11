@@ -50,15 +50,24 @@ async function getForecast(userLat, userLong) {
   todayMax.innerHTML = "↑ " + data.list[0].temp.max.toFixed(1) + "°";
   todayMin.innerHTML = "↓ " + data.list[0].temp.min.toFixed(1) + "°";
   let forecastBox = document.getElementById("forecastBox");
+  console.log(data);
   for (let i = 1; i < 6; i++) {
     let div = document.createElement("div");
+    div.classList.add("dailyForecast");
+    let dayIcon = document.createElement("img");
     let dayName = document.createElement("p");
     let dayMax = document.createElement("p");
     let dayMin = document.createElement("p");
+    let iconScr =
+      "https://openweathermap.org/img/w/" +
+      data.list[i].weather[0].icon +
+      ".png";
+    dayIcon.setAttribute("src", iconScr);
     dayName.innerHTML = dayOfTheWeek[(day + i) % 7];
     dayMax.innerHTML = data.list[i].temp.max.toFixed(1) + "°";
     dayMin.innerHTML = data.list[i].temp.min.toFixed(1) + "°";
-    console.log(dayName, dayMax, dayMin);
+    // console.log(dayName, dayMax, dayMin);
+    div.appendChild(dayIcon);
     div.appendChild(dayName);
     div.appendChild(dayMax);
     div.appendChild(dayMin);

@@ -8,45 +8,25 @@ var todayMin = document.getElementById("todayMin");
 
 /* custom png sets for openweathermap icons */
 
-const currentIconFinder = {
-  "01d": "/img/weatherIcons/clear_day.png",
-  "01n": "/img/weatherIcons/clear_night.png",
-  "02d": "/img/weatherIcons/cloudy_day.png",
-  "02n": "/img/weatherIcons/cloudy_night.png",
-  "03d": "/img/weatherIcons/cloudy.png",
-  "03n": "/img/weatherIcons/cloudy.png",
-  "04d": "/img/weatherIcons/cloudy.png",
-  "04n": "/img/weatherIcons/cloudy.png",
-  "09d": "/img/weatherIcons/rain_shower.png",
-  "09n": "/img/weatherIcons/rain_shower.png",
-  "10d": "/img/weatherIcons/rain_normal.png",
-  "10n": "/img/weatherIcons/rain_normal.png",
-  "11d": "/img/weatherIcons/thunderstorm.png",
-  "11n": "/img/weatherIcons/thunderstorm.png",
-  "13d": "/img/weatherIcons/snow.png",
-  "13n": "/img/weatherIcons/snow.png",
-  "50d": "/img/weatherIcons/mist.png",
-  "50n": "/img/weatherIcons/mist.png"
-};
-const forecastIconFinder = {
-  "01d": "/img/weatherIcons/forecastIcons/clear_day.png",
-  "01n": "/img/weatherIcons/forecastIcons/clear_night.png",
-  "02d": "/img/weatherIcons/forecastIcons/cloudy_day.png",
-  "02n": "/img/weatherIcons/forecastIcons/cloudy_night.png",
-  "03d": "/img/weatherIcons/forecastIcons/cloudy.png",
-  "03n": "/img/weatherIcons/forecastIcons/cloudy.png",
-  "04d": "/img/weatherIcons/forecastIcons/cloudy.png",
-  "04n": "/img/weatherIcons/forecastIcons/cloudy.png",
-  "09d": "/img/weatherIcons/forecastIcons/rain_shower.png",
-  "09n": "/img/weatherIcons/forecastIcons/rain_shower.png",
-  "10d": "/img/weatherIcons/forecastIcons/rain_normal.png",
-  "10n": "/img/weatherIcons/forecastIcons/rain_normal.png",
-  "11d": "/img/weatherIcons/forecastIcons/thunderstorm.png",
-  "11n": "/img/weatherIcons/forecastIcons/thunderstorm.png",
-  "13d": "/img/weatherIcons/forecastIcons/snow.png",
-  "13n": "/img/weatherIcons/forecastIcons/snow.png",
-  "50d": "/img/weatherIcons/forecastIcons/mist.png",
-  "50n": "/img/weatherIcons/forecastIcons/mist.png"
+const IconFinder = {
+  "01d": "./img/weatherIcons/clear_day.png",
+  "01n": "./img/weatherIcons/clear_night.png",
+  "02d": "./img/weatherIcons/cloudy_day.png",
+  "02n": "./img/weatherIcons/cloudy_night.png",
+  "03d": "./img/weatherIcons/cloudy.png",
+  "03n": "./img/weatherIcons/cloudy.png",
+  "04d": "./img/weatherIcons/cloudy.png",
+  "04n": "./img/weatherIcons/cloudy.png",
+  "09d": "./img/weatherIcons/rain_shower.png",
+  "09n": "./img/weatherIcons/rain_shower.png",
+  "10d": "./img/weatherIcons/rain_normal.png",
+  "10n": "./img/weatherIcons/rain_normal.png",
+  "11d": "./img/weatherIcons/thunderstorm.png",
+  "11n": "./img/weatherIcons/thunderstorm.png",
+  "13d": "./img/weatherIcons/snow.png",
+  "13n": "./img/weatherIcons/snow.png",
+  "50d": "./img/weatherIcons/mist.png",
+  "50n": "./img/weatherIcons/mist.png"
 };
 
 /* getting location */
@@ -75,8 +55,8 @@ async function getWeather(userLat, userLong) {
   let raw = await fetch(myURL);
   let data = await raw.json();
   let iconRaw = data.weather[0].icon;
-  let iconScr = currentIconFinder[iconRaw];
-  let cityNameData = data.name.split(" ")
+  let iconScr = IconFinder[iconRaw];
+  let cityNameData = data.name.split(" ");
   if (cityNameData.length > 1) {
     cityName.innerHTML = cityNameData[0];
   } else {
@@ -113,11 +93,15 @@ async function getForecast(userLat, userLong) {
     let dayName = document.createElement("p");
     dayName.classList.add("dayName");
     let dayMax = document.createElement("p");
-    dayMax.classList.add("dayMax")
+    dayMax.classList.add("dayMax");
     let dayMin = document.createElement("p");
     dayMin.classList.add("dayMin");
     let iconRaw = data.list[i].weather[0].icon;
-    let iconScr = forecastIconFinder[iconRaw];
+    let iconScr = IconFinder[iconRaw];
+    iconScr =
+      iconScr.slice(0, 19) +
+      "forecastIcons/" +
+      iconScr.slice(19, iconScr.length);
     dayIcon.setAttribute("src", iconScr);
     dayName.innerHTML = dayOfTheWeek[(day + i) % 7];
     dayMax.innerHTML = " " + data.list[i].temp.max.toFixed() + "°";

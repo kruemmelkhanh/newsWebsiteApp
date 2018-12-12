@@ -1,12 +1,11 @@
-$(document).ready(function () {
-
+$(document).ready(function() {
   /* our pretzel and default source and url */
   let pretzels = "c90d69bab6e84e39ac36904e19c7fbdd";
   let newsSource = "sources=bbc-news";
   let url = `https://newsapi.org/v2/top-headlines?${newsSource}&apiKey=${pretzels}`;
 
   /* getting the news from the api with a url parameter */
-  const getNews = async function (url) {
+  const getNews = async function(url) {
     let raw = await fetch(url);
     let data = await raw.json();
     let newsCards = document.getElementById("headlines");
@@ -15,11 +14,8 @@ $(document).ready(function () {
     let currentDate = new Date();
     let currentTime = currentDate.getTime();
 
-
     if (data.status === "ok") {
-
-
-      let summaries = data.articles.map(function (item) {
+      let summaries = data.articles.map(function(item) {
         let articleDate = new Date(item.publishedAt);
         let articleTime = articleDate.getTime();
         let hoursAgo = calculateHoursAgo(currentTime, articleTime);
@@ -64,10 +60,8 @@ $(document).ready(function () {
       console.log("There was an error.");
     }
 
-
     /* calculating post time here */
     function calculateHoursAgo(currentTime, articleTime) {
-
       let hourNumber = Math.round((currentTime - articleTime) / 3600000);
 
       if (hourNumber < 1) {
@@ -89,26 +83,24 @@ $(document).ready(function () {
 
   /* sidebar code to show or hide the sidebar */
 
-  $("#menuButton").click(function (e) {
+  $("#menuButton").click(function(e) {
     e.stopPropagation();
     $("#mySideBar").toggleClass("sidebarActive");
   });
 
   /* sidebar code to hide the sidebar when clicked on somewhere other than the sidebar or the hamburger icon */
 
-  $('body,html').click(function (e) {
-
+  $("body,html").click(function(e) {
     var container = $("#mySideBar");
 
     if (!container.is(e.target) && container.has(e.target).length === 0) {
-      container.removeClass('sidebarActive');
-
+      container.removeClass("sidebarActive");
     }
   });
 
-  /* sidebar code to change the active button, and the displayed news source */
+  /* sidebar code to change the active list item and the displayed news source */
 
-  $(".sideBarItem").click(function (e) {
+  $(".sideBarItem").click(function(e) {
     $("#headlines").html("");
     let topInfoIcon = $("#topInfoSectionIcon");
     let topInfoText = $("#topInfoSectionText");
@@ -175,12 +167,10 @@ $(document).ready(function () {
     }
   });
 
-
   /* shows and hides sections of the page according to width */
 
   $(window)
-    .on("resize", function () {
-
+    .on("resize", function() {
       let windowWidth = $(window).width();
 
       if (windowWidth < 992) {

@@ -47,7 +47,7 @@ $(document).ready(function() {
               <img
                 src="${item.urlToImage}"
                 alt="${item.title}"
-                onerror="this.src='/img/missing.png'"
+                onerror="this.src='./img/missing.png'"
               />
             </div>
           </div>`);

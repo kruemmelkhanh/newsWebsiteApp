@@ -1,4 +1,4 @@
-var key = "ccf31ad40fb6d05a1f40b2802a01eada";
+var bananas = "ccf31ad40fb6d05a1f40b2802a01eada";
 var cityName = document.getElementById("cityName");
 var description = document.getElementById("description");
 var temperature = document.getElementById("temperature");
@@ -31,7 +31,7 @@ function getLocation() {
 getLocation();
 
 async function getWeather(userLat, userLong) {
-  var myURL = `https://api.openweathermap.org/data/2.5/weather?lat=${userLat}&lon=${userLong}&APPID=${key}&units=metric`;
+  var myURL = `https://api.openweathermap.org/data/2.5/weather?lat=${userLat}&lon=${userLong}&APPID=${bananas}&units=metric`;
   let raw = await fetch(myURL);
   let data = await raw.json();
   console.log(data);
@@ -44,7 +44,7 @@ async function getWeather(userLat, userLong) {
 }
 
 async function getForecast(userLat, userLong) {
-  var myURL = `https://api.openweathermap.org/data/2.5/forecast/daily?lat=${userLat}&lon=${userLong}&cnt=6&APPID=${key}&units=metric`;
+  var myURL = `https://api.openweathermap.org/data/2.5/forecast/daily?lat=${userLat}&lon=${userLong}&cnt=6&APPID=${bananas}&units=metric`;
   let raw = await fetch(myURL);
   let data = await raw.json();
   // console.log(data);

@@ -1,14 +1,29 @@
 @import url("weather.css");
-/* general stuff */
+
+/* big stuff */
+:root {
+  --primary-color: #0f0959;
+  --secondary-color: #d68e43;
+}
+
 body {
+  padding: 0;
+  margin: 0;
+  width: 100%;
   background: white;
   color: black;
   box-sizing: border-box;
   min-height: 100vh;
+  font-family: "Work Sans", sans-serif;
+}
+
+#mainContainer {
+  margin: 0;
 }
 
 #middleRow {
-  margin-top: 2em;
+  margin-top: 5em;
+  margin-bottom: 20%;
   min-height: 1200px;
 }
 
@@ -25,29 +40,38 @@ body {
   width: auto;
   border: 1px solid rgba(0, 0, 0, 0.18);
 }
-/* general stuff over */
+
+/* big stuff over */
 
 /* sidebar */
 
-@import url('https://fonts.googleapis.com/css?family=Poppins');
+@import url("https://fonts.googleapis.com/css?family=Poppins");
+
 .sidebar {
-  height: auto;
+  height: 100%;
   width: 16%;
   min-width: 200px;
   background-color: white;
   position: fixed;
-  top: 6em;
-  z-index: 99;
+  top: 4em;
+  left: -40em;
+  z-index: 1;
   overflow: auto;
   display: flex;
   flex-direction: column;
-  border-collapse: collapse;
-  -webkit-box-shadow: 2px 2px 14px -2px rgba(0, 0, 0, 0.18);
-  -moz-box-shadow: 2px 2px 14px -2px rgba(0, 0, 0, 0.18);
-  box-shadow: 2px 2px 14px -2px rgba(0, 0, 0, 0.18);
-  border-top-right-radius: 1em;
-  border-bottom-right-radius: 1em;
-  font-family: 'Poppins', sans-serif;
+  transition: 0.5s;
+  -webkit-box-shadow: 0px 0px 14px -2px rgba(0, 0, 0, 0.6);
+  -moz-box-shadow: 0px 0px 14px -2px rgba(0, 0, 0, 0.6);
+  box-shadow: 0px 0px 14px -2px rgba(0, 0, 0, 0.6);
+  font-family: "Poppins", sans-serif;
+}
+
+#mySideBar {
+  padding-top: 2em;
+}
+
+.sidebarActive {
+  left: 0;
 }
 
 #hamburgerMenu {
@@ -55,28 +79,28 @@ body {
 }
 
 .listItem {
-    width: 100%;
-    height: auto;
-    text-align: left;
-    border-collapse: collapse;
-    font-weight: bold;
+  width: 100%;
+  height: auto;
+  text-align: left;
+  border-collapse: collapse;
+  font-weight: bold;
 }
 
 .listItemLink {
-    text-decoration: none;
-    color: black;
-    height: 3em;
-    width: inherit;
-    background: transparent;
-    display: flex;
-    justify-content: left;
-    align-items: center;
-    padding-left: 2em;
+  text-decoration: none;
+  color: black;
+  height: 3em;
+  width: inherit;
+  background: transparent;
+  display: flex;
+  justify-content: left;
+  align-items: center;
+  padding-left: 2em;
 }
 
 .listItemLinkActive {
   text-decoration: none;
-  background: lightseagreen;
+  background: var(--primary-color);
   color: whitesmoke;
   text-decoration: none;
   height: 3em;
@@ -88,35 +112,28 @@ body {
 }
 
 .listItemLinkActive:hover {
-    text-decoration: none;
-    color: rgb(2, 22, 2);
+  text-decoration: none;
+  color: var(--secondary-color);
 }
 
 .listItemLink:hover {
-    text-decoration: none;
-    color: lightseagreen;
+  text-decoration: none;
+  color: var(--secondary-color);
 }
 
 /* sidebar over */
 
-/* top info section */
-.topInfoSection {
-  background: pink;
-}
-
-/* top info section over */
-
 /* news cards */
 
 .newsCard {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 0.2em;
-    margin: 0.2em;
-    -webkit-box-shadow: 2px 2px 14px -2px rgba(0, 0, 0, 0.18);
-    -moz-box-shadow: 2px 2px 14px -2px rgba(0, 0, 0, 0.18);
-    box-shadow: 2px 2px 14px -2px rgba(0, 0, 0, 0.18);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.2em;
+  margin: 0.2em;
+  -webkit-box-shadow: 2px 2px 14px -2px rgba(0, 0, 0, 0.18);
+  -moz-box-shadow: 2px 2px 14px -2px rgba(0, 0, 0, 0.18);
+  box-shadow: 2px 2px 14px -2px rgba(0, 0, 0, 0.18);
 }
 
 .newsCardText {
@@ -125,7 +142,6 @@ body {
   padding: 0;
   margin: 0;
   line-height: 100%;
-  font-family: 'Poppins', sans-serif;
 }
 
 .thirdRow {
@@ -135,6 +151,15 @@ body {
   min-height: 2em;
 }
 
+.newsCardText h3 {
+  font-weight: 600;
+  font-size: 1.5em;
+}
+
+.cardTextDescription {
+  font-weight: 300;
+}
+
 .newsCardText .headlineLink {
   text-decoration: none;
   color: black;
@@ -142,11 +167,11 @@ body {
 
 .newsCardText .headlineLink:hover {
   text-decoration: none;
-  color: lightseagreen;
-  text-decoration: underline;
+  color: var(--secondary-color);
 }
 
-.newsCardText h3, p {
+.newsCardText h3,
+p {
   margin: 0.1em;
 }
 
@@ -155,24 +180,29 @@ body {
   padding: 0;
   margin: 0;
   height: 100px;
-  width: 150px
+  width: 150px;
 }
 
 .newsCardImage img {
-    height: 100%;
-    width: 150px;
-    border: 0.1em solid lightseagreen;
+  height: 100%;
+  width: 150px;
+  -webkit-box-shadow: 0px 0px 5px 2px rgba(0, 0, 0, 0.08);
+  -moz-box-shadow: 0px 0px 5px 2px rgba(0, 0, 0, 0.08);
+  box-shadow: 0px 0px 5px 2px rgba(0, 0, 0, 0.08);
 }
 
 .cardTimeStamp {
   font-size: 0.8em;
   color: gray;
+  font-weight: 300;
 }
 
 /** news card share buttons container **/
+
 .newsCard:hover .shareEmail {
   opacity: 1;
 }
+
 .newsCard:hover .shareTwitter {
   opacity: 1;
 }
@@ -197,7 +227,7 @@ body {
 
 .shareEmail:hover {
   text-decoration: none;
-  color: lightseagreen;
+  color: var(--secondary-color);
 }
 
 .shareTwitter:hover {
@@ -209,14 +239,15 @@ body {
 /* news cards over*/
 
 .container-fluid {
-    margin-top: 1em;
+  margin-top: 1em;
 }
 
 /* top bar/row */
 
 #bigName {
   text-align: center;
-  height: 6em;
+  height: 2em;
+  margin-left: 2em;
 }
 
 #bigName img {
@@ -225,6 +256,11 @@ body {
 }
 
 #topRow {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 100;
+  background: white;
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -233,10 +269,12 @@ body {
   -webkit-box-shadow: 0px 3px 3px 0px rgba(0, 0, 0, 0.28);
   -moz-box-shadow: 0px 3px 3px 0px rgba(0, 0, 0, 0.28);
   box-shadow: 0px 3px 3px 0px rgba(0, 0, 0, 0.28);
-  padding-bottom: 1em;
+  padding: 1em;
 }
 
 #menuButtonDiv {
+  position: absolute;
+  left: 2em;
   height: auto;
   text-decoration: none;
 }
@@ -252,8 +290,9 @@ body {
 
 #menuButton:hover {
   text-decoration: none;
-  color: lightseagreen;
+  color: var(--secondary-color);
 }
+
 /* top bar/row over */
 
 /* middle row */
@@ -268,11 +307,13 @@ body {
 #topInfoSectionText {
   font-size: 2em;
   font-weight: 700;
+  color: var(--primary-color)
 }
+
 #topInfoSectionIcon {
   padding-right: 1em;
   font-size: 2em;
-  color: lightseagreen;
+  color: var(--primary-color);
 }
 
 /* footer */
@@ -280,17 +321,31 @@ footer {
   display: flex;
   justify-content: center;
   align-items: center;
+  position: relative;
+  z-index: 2;
   min-height: 4em;
-  background: rgba(32, 178, 170, 0.3);
+  background: rgb(161, 168, 170);
   -webkit-box-shadow: 0px 3px 3px 0px rgba(0, 0, 0, 0.28);
   -moz-box-shadow: 0px 3px 3px 0px rgba(0, 0, 0, 0.28);
   box-shadow: 5px 3px 3px 5px rgba(0, 0, 0, 0.28);
   margin-top: 2em;
   font-weight: 500;
-  color: lightslategray;
+  color: rgb(196, 207, 218);
+  text-align: center;
+  padding: 1em;
+}
+
+footer a {
+  text-decoration: none;
+  color: rgb(196, 207, 218);
+  padding: 1em;
+}
+
+footer a:hover {
+  text-decoration: none;
+  color: var(--primary-color);
 }
 
 title {
-  font-family: 'Poppins', sans-serif;
-
+  font-family: "Work Sans", sans-serif;
 }

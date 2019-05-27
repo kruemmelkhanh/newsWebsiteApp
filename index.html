@@ -1,141 +1,133 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <script
-      src="http://code.jquery.com/jquery-3.3.1.js"
-      integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
-      crossorigin="anonymous"
-    ></script>
-    <link
-      rel="stylesheet"
-      href="https://use.fontawesome.com/releases/v5.5.0/css/all.css"
-      integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU"
-      crossorigin="anonymous"
-    />
-    <link
-      rel="stylesheet"
-      href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
-      integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
-      crossorigin="anonymous"
-    />
-    <link rel="stylesheet" href="./style/main.css" />
-    <link rel="shortcut icon" href="/img/icon.ico">
-    <title>SKG News</title>
-  </head>
 
-  <body>
-    <div class="container-fluid" id="mainContainer">
-      <div class="row" id="topRow">
-        <div class="col-1" id="menuButtonDiv">
-          <a href="#" rel="noopener noreferrer" id="menuButton">
-            <!--
-              -onclick="openSideBar();"
-              >
-            --><i class="fas fa-bars" id="hamburgerMenu"></i
-          ></a>
-        </div>
-        <div class="col-11" id="bigName">
-          <img
-          src="/img/logo.png"
-          alt="test"/>
-        </div>
-      </div>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+    crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU"
+    crossorigin="anonymous" />
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+    crossorigin="anonymous" />
+  <link href="https://fonts.googleapis.com/css?family=Work+Sans:300,400,600" rel="stylesheet">
+  <link rel="stylesheet" href="./style/main.css" />
+  <link rel="shortcut icon" href="./img/raven_rL5_icon.ico" />
+  <title>SKG News</title>
+</head>
 
-      <div class="row" id="middleRow">
-        <!-- SIDEBAR -->
-        <div class="sidebar" id="mySideBar">
-          <div class="listItem">
-            <a href="#" class="sideBarItem listItemLinkActive" tag="world"
-              >World</a
-            >
-          </div>
-          <div class="listItem">
-            <a href="#" class="sideBarItem listItemLink">Sports</a>
-          </div>
-          <div class="listItem">
-            <a href="#" class="sideBarItem listItemLink">Business</a>
-          </div>
-          <div class="listItem">
-            <a href="#" class="sideBarItem listItemLink">Tech</a>
-          </div>
-          <div class="listItem">
-            <a href="#" class="sideBarItem listItemLink">Entertainment</a>
-          </div>
-          <div class="listItem">
-            <a href="#" class="sideBarItem listItemLink">Health</a>
-          </div>
-          <div class="listItem">
-            <a href="#" class="sideBarItem listItemLink">Local</a>
-          </div>
-        </div>
-        <!-- HEADLINES -->
-        <div id="middleColumn" class="col-lg-6 offset-lg-2 col-md-12">
-          <div id="topInfoSection">
-            <div id="topInfoContainer">
-              <i id="topInfoSectionIcon" class="fas fa-globe-americas"></i
-              ><span id="topInfoSectionText">World</span>
-            </div>
-          </div>
-          <div id="headlines"></div>
-        </div>
-        <!-- WEATHER -->
-        <div id="weather" class="col-lg-4 d-lg-block d-none">
-          <div id="weatherBox">
-            <div id="cityName" class="grid-item weather-a"></div>
-            <div id="description" class="grid-item weather-b"></div>
-            <div id="temperature" class="grid-item weather-c"></div>
-            <div class="grid-item weather-d">
-              <img id="weatherIcon" alt="" />
-            </div>
-            <div id="todayMax" class="grid-item weather-e"></div>
-            <div id="todayMin" class="grid-item weather-f"></div>
-            <div id="forecast1" class="grid-item weather-g"></div>
-            <div id="forecast2" class="grid-item weather-h"></div>
-            <div id="forecast3" class="grid-item weather-i"></div>
-            <div id="forecast4" class="grid-item weather-j"></div>
-            <div id="forecast5" class="grid-item weather-k"></div>
-          </div>
-        </div>
+<body>
+  <div class="container-fluid" id="mainContainer">
+    <div class="row" id="topRow">
+      <div class="" id="menuButtonDiv">
+        <a rel="noopener noreferrer" id="menuButton" class="menuButton">
+          <i class="fas fa-bars" id="hamburgerMenu"></i></a>
       </div>
-      <!--
-        <div class="row">
-          NEWS CARDS
-          <div id="cards" class="col-lg-6 offset-lg-2 col-md-12 col-sm-12 ">
-            <div class="newsCard">
-              <div class="newsCardText">
-                <a href="#">
-                  <h3 class="CardTextHeadine">Giuliani's Twitter typo used to abuse President Trump</h3>
-                </a>
-                <p>3 hours ago</p>
-              </div>
-              <div class="newsCardImage">
-                <img src="https://dummyimage.com/300x200/000/010105&text=No+image+provided." alt="test">
-              </div>
-            </div>
-          </div>
-        </div>
-      -->
+      <div class="" id="bigName">
+        <a href="index.html"><img src="./img/logo_new.png" alt="test" /></a>
+      </div>
     </div>
-    <footer><p>&copy&nbspSGK News Network Corp Llc Ltd - 2018</p></footer>
-    <script src="./js/main.js"></script>
-    <script src="./js/weather.js"></script>
-    <script
-      src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-      integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-      crossorigin="anonymous"
-    ></script>
-    <script
-      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
-      integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
-      crossorigin="anonymous"
-    ></script>
-    <script
-      src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
-      integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
-      crossorigin="anonymous"
-    ></script>
-  </body>
+
+    <div class="row" id="middleRow">
+      <!-- SIDEBAR -->
+      <div class="sidebar sidebarActive" id="mySideBar">
+        <div class="listItem">
+          <a href="#" class="sideBarItem listItemLinkActive" tag="world"><i class="fas fa-globe-americas"></i>&nbsp;&nbsp;World</a>
+        </div>
+        <div class="listItem">
+          <a href="#" class="sideBarItem listItemLink"><i class="fas fa-basketball-ball"></i>&nbsp;&nbsp;Sports</a>
+        </div>
+        <div class="listItem">
+          <a href="#" class="sideBarItem listItemLink"><i class="fas fa-chart-bar"></i>&nbsp;&nbsp;Business</a>
+        </div>
+        <div class="listItem">
+          <a href="#" class="sideBarItem listItemLink"><i class="fas fa-microchip"></i>&nbsp;&nbsp;Tech</a>
+        </div>
+        <div class="listItem">
+          <a href="#" class="sideBarItem listItemLink"><i class="fas fa-theater-masks"></i>&nbsp;&nbsp;Entertainment</a>
+        </div>
+        <div class="listItem">
+          <a href="#" class="sideBarItem listItemLink"><i class="fas fa-heartbeat"></i>&nbsp;&nbsp;Health</a>
+        </div>
+        <div class="listItem">
+          <a href="#" class="sideBarItem listItemLink"><i class="fas fa-map-marker-alt"></i>&nbsp;&nbsp;Local</a>
+        </div>
+      </div>
+      <!-- HEADLINES -->
+      <div id="middleColumn" class="col-lg-6 offset-lg-2 col-md-12">
+        <div id="topInfoSection">
+          <div id="topInfoContainer">
+            <i id="topInfoSectionIcon" class="fas fa-globe-americas"></i><span id="topInfoSectionText">World</span>
+          </div>
+        </div>
+        <div id="headlines"></div>
+      </div>
+      <!-- WEATHER -->
+      <div id="weather" class="col-lg-4 d-lg-block d-none">
+        <div id="weatherBox">
+          <div class="flex-item top">
+            <div id="cityName">You have to allow location access to display the weather information.</div>
+            <div class="hrDiv">
+              <hr>
+            </div>
+          </div>
+          <div class="flex-item middle">
+            <div id="left">
+              <div id="description"></div>
+              <div id="temperatures">
+                <div id="temperature"></div>
+                <div id="todayMax"></div>
+                <div id="todayMin"></div>
+              </div>
+            </div>
+            <div id="right">
+              <div id="weatherIconContainer"><img id="weatherIcon" alt="" height="100px" width="100px" /></div>
+            </div>
+
+          </div>
+          <div class="hrDiv">
+            <hr>
+          </div>
+          <div id="forecastBox" class="flex-item bottom">
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <div id="document-footer-content">
+      <p>
+        SKG News is part of SGK LLC, an international media group and leading
+        digital publisher. <a href="http://news.google.com" target="_blank">Visit our corporate site.</a></p>
+      <div id="footerLinks">
+        <a href="https://en.wikipedia.org/wiki/Apex_predator" target="_blank">About Us</a>
+
+        <a href="https://wikileaks.org/" target="_blank">Terms and Conditions</a>
+
+        <a href="https://en.wikipedia.org/wiki/Wikipedia:Privacy_policy" target="_blank">Privacy Policy</a>
+
+        <a href="https://www.youtube.com/watch?v=I5e6ftNpGsU" target="_blank">Cookies Policy</a>
+      </div>
+      <p>
+        &copy;
+        <span>
+          <span> <span>SKG Publishing Limited</span></span>. All rights reserved.
+      </p>
+    </div>
+  </footer>
+  <!-- SCRIPTS -->
+  <script src="./js/main.js"></script>
+  <script src="./js/weather.js"></script>
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+    crossorigin="anonymous"></script>
+</body>
+
 </html>

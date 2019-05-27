@@ -1,76 +1,137 @@
-* {
-  font-family: "Roboto", sans-serif; }
-
 #weatherBox {
   width: 50%;
-  display: grid;
-  grid-template-columns: repeat 5, 1fr;
-  grid-template-rows: repeat(5, 1fr);
-  grid-column-gap: 5px;
-  grid-row-gap: 5px; }
-
-.grid-item {
-  padding: 2px;
-  -webkit-box-shadow: 2px 2px 14px -2px rgba(0, 0, 0, 0.15);
-  -moz-box-shadow: 2px 2px 14px -2px rgba(0, 0, 0, 0.15);
-  box-shadow: 2px 2px 14px -2px rgba(0, 0, 0, 0.15);
+  min-width: 380px;
+  display: flex;
+  flex-direction: column;
   border: 1px solid rgba(211, 211, 211, 0.5);
-  border-radius: 3px; }
+  -webkit-box-shadow: 2px 2px 14px -2px rgba(0, 0, 0, 0.18);
+  -moz-box-shadow: 2px 2px 14px -2px rgba(0, 0, 0, 0.18);
+  box-shadow: 2px 2px 14px -2px rgba(0, 0, 0, 0.18);
+  padding: 1em;
+}
 
-.weather-a {
-  grid-row: 1/2;
-  grid-column: 1/6;
-  padding: 5px 8px; }
+#weatherBox div {
+  width: 100%;
+}
 
-.weather-b {
-  grid-row: 2 / 3;
-  grid-column: 1 / 4;
-  padding: 5px 8px; }
+.flex-item {
+  margin-bottom: 0.5em;
+}
 
-.weather-c {
-  grid-row: 3 / 4;
-  grid-column: 1/ 2;
-  padding: 5px 8px; }
+.top {
+  margin-top: 0.5em;
+  display: flex;
+  flex-flow: column wrap;
+}
 
-.weather-d {
-  grid-row: 2 / 4;
-  grid-column: 4/ 6;
-  text-align: center; }
+.middle {
+  margin-top: 1em;
+}
 
-.weather-e {
-  grid-row: 3 / 4;
-  grid-column: 2 / 3;
-  padding: 5px 8px; }
+.hrDiv {
+  height: 0.6em;
+  padding-top: 0.6em;
+}
 
-.weather-f {
-  grid-row: 3 / 4;
-  grid-column: 3 / 4;
-  color: darkgrey;
-  padding: 5px 8px; }
+.hrDiv hr {
+  margin: 0;
+  padding: 0;
+  width: 98%;
+  background-color: rgba(192, 192, 192, 0.1);
+  height: 1px;
+}
 
-.weather-g {
-  grid-row: 4 / 5;
-  grid-column: 1 / 2;
-  padding: 5px 8px; }
+.bottom {
+  margin-bottom: 0.5em;
+  margin-top: 1em;
+}
 
-.weather-h {
-  grid-row: 4 / 5;
-  grid-column: 2 / 3;
-  padding: 5px 8px; }
+.top,
+.middle,
+.bottom {
+  display: flex;
+  justify-content: center;
+}
 
-.weather-i {
-  grid-row: 4 / 5;
-  grid-column: 3 / 4;
-  padding: 5px 8px; }
+.dailyForecast {
+  width: 20%;
+}
 
-.weather-j {
-  grid-row: 4 / 5;
-  grid-column: 4 / 5;
-  padding: 5px 8px; }
+.dailyForecast p {
+  padding: 0;
+  margin: 0 !important;
+}
 
-.weather-k {
-  grid-row: 4 / 5;
-  grid-column: 5 / 6;
-  padding: 5px 8px; }
+.dailyForecast img {
+  height: 4em;
+  padding: 0.5em;
+}
+
+#todayMax,
+#todayMin {
+  font-size: 90%;
+  text-align: center;
+}
+
+#cityName {
+  margin-left: 0.8em;
+  font-weight: 400;
+  color: rgba(0, 0, 0, 0.6);
+}
+
+#left {
+  margin-left: 1em;
+  display: flex;
+  flex-flow: column wrap;
+  justify-content: center;
+}
+
+#description p {
+  margin-left: -0.1em;
+  font-size: 1.1em;
+}
+
+#temperature,
+#description {
+  font-weight: 600;
+}
+
+#temperatures {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-items: flex-end;
+  margin-top: 0.6em;
+}
+
+.dayName {
+  font-weight: 600;
+}
+
+.dayMin,
+.dayMax {
+  text-align: center;
+}
+
+.dayMin {
+  color: rgba(0, 0, 0, 0.40)
+}
+
+#weatherIconContainer {
+  display: flex;
+  justify-content: center;
+}
+
+#weatherIconContainer img {
+  align-self: center;
+}
+
+#forecastBox {
+  font-size: 85%;
+}
+
+#forecastBox div {
+  text-align: center;
+}
 
 /*# sourceMappingURL=weather.css.map */

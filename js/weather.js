@@ -62,7 +62,7 @@ async function getWeather(userLat, userLong) {
     cityName.innerHTML = data.name
   }
   const weatherRaw = data.weather[0].description.split(" ")
-  const weatherDone = []
+  let weatherDone = []
   for (let word of weatherRaw) {
     word = word.charAt(0).toUpperCase() + word.slice(1, word.length)
     weatherDone.push(word)
@@ -79,7 +79,6 @@ async function getForecast(userLat, userLong) {
   const raw = await fetch(`https://nwa-be.xqwtsz.now.sh/api/weather?userLat=${userLat}&userLong=${userLong}&type=${"forecast"}`)
   const api = await raw.json()
   const { data } = api
-  console.log(data)
   const today = new Date()
   const day = today.getDay()
   const dayOfTheWeek = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"]
@@ -97,7 +96,7 @@ async function getForecast(userLat, userLong) {
     const dayMin = document.createElement("p")
     dayMin.classList.add("dayMin")
     const iconRaw = data.list[i].weather[0].icon
-    const iconScr = IconFinder[iconRaw]
+    let iconScr = IconFinder[iconRaw]
     iconScr =
       iconScr.slice(0, 19) +
       "forecastIcons/" +

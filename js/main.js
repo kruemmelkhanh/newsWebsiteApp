@@ -1,7 +1,7 @@
 $(document).ready(function() {
   /* getting the news from the api with a url parameter */
   const getNews = async function(newsSource) {
-    let raw = await fetch(`https://newswebsiteapp.xqwtsz.now.sh/news/${newsSource}`);
+    let raw = await fetch(`https://nwa-be.xqwtsz.now.sh/api/news?newsSource=${newsSource}`);
     let api = await raw.json();
     let { data } = api
     let newsCards = document.getElementById("headlines");

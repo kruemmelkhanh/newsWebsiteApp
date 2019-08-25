@@ -50,7 +50,7 @@ getLocation()
 /* getting current weather */
 
 async function getWeather(userLat, userLong) {
-  const raw = await fetch(`https://newswebsiteapp.xqwtsz.now.sh/weather?userLat=${userLat}&userLong=${userLong}&type=${"daily"}`)
+  const raw = await fetch(`https://nwa-be.xqwtsz.now.sh/api/weather?userLat=${userLat}&userLong=${userLong}&type=${"daily"}`)
   const api = await raw.json()
   const { data } = api
   const iconRaw = data.weather[0].icon
@@ -76,7 +76,7 @@ async function getWeather(userLat, userLong) {
 /* getting the forecast */
 
 async function getForecast(userLat, userLong) {
-  const raw = await fetch(`https://newswebsiteapp.xqwtsz.now.sh/weather?userLat=${userLat}&userLong=${userLong}&type=${"forecast"}`)
+  const raw = await fetch(`https://nwa-be.xqwtsz.now.sh/api/weather?userLat=${userLat}&userLong=${userLong}&type=${"forecast"}`)
   const api = await raw.json()
   const { data } = api
   console.log(data)

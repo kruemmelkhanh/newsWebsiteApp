@@ -1,10 +1,9 @@
-var donut = "ccf31ad40fb6d05a1f40b2802a01eada"
-var cityName = document.getElementById("cityName")
-var description = document.getElementById("description")
-var temperature = document.getElementById("temperature")
-var icon = document.getElementById("weatherIcon")
-var todayMax = document.getElementById("todayMax")
-var todayMin = document.getElementById("todayMin")
+const cityName = document.getElementById("cityName")
+const description = document.getElementById("description")
+const temperature = document.getElementById("temperature")
+const icon = document.getElementById("weatherIcon")
+const todayMax = document.getElementById("todayMax")
+const todayMin = document.getElementById("todayMin")
 
 /* custom png sets for openweathermap icons */
 
@@ -39,8 +38,8 @@ function getLocation() {
   }
 
   function gotPosition(position) {
-    let userLat = position.coords.latitude
-    let userLong = position.coords.longitude
+    const userLat = position.coords.latitude
+    const userLong = position.coords.longitude
     getWeather(userLat, userLong)
     getForecast(userLat, userLong)
   }
@@ -51,19 +50,19 @@ getLocation()
 /* getting current weather */
 
 async function getWeather(userLat, userLong) {
-  var myURL = `https://api.openweathermap.org/data/2.5/weather?lat=${userLat}&lon=${userLong}&APPID=${donut}&units=metric`
-  let raw = await fetch(myURL)
-  let data = await raw.json()
-  let iconRaw = data.weather[0].icon
-  let iconScr = IconFinder[iconRaw]
-  let cityNameData = data.name.split(" ")
+  const raw = await fetch(`https://newswebsiteapp.xqwtsz.now.sh/weather?userLat=${userLat}&userLong=${userLong}&type=${"daily"}`)
+  const api = await raw.json()
+  const { data } = api
+  const iconRaw = data.weather[0].icon
+  const iconScr = IconFinder[iconRaw]
+  const cityNameData = data.name.split(" ")
   if (cityNameData.length > 1) {
     cityName.innerHTML = cityNameData[0]
   } else {
     cityName.innerHTML = data.name
   }
-  let weatherRaw = data.weather[0].description.split(" ")
-  let weatherDone = []
+  const weatherRaw = data.weather[0].description.split(" ")
+  const weatherDone = []
   for (let word of weatherRaw) {
     word = word.charAt(0).toUpperCase() + word.slice(1, word.length)
     weatherDone.push(word)
@@ -77,27 +76,28 @@ async function getWeather(userLat, userLong) {
 /* getting the forecast */
 
 async function getForecast(userLat, userLong) {
-  var myURL = `https://api.openweathermap.org/data/2.5/forecast/daily?lat=${userLat}&lon=${userLong}&cnt=6&APPID=${donut}&units=metric`
-  let raw = await fetch(myURL)
-  let data = await raw.json()
-  let today = new Date()
-  let day = today.getDay()
+  const raw = await fetch(`https://newswebsiteapp.xqwtsz.now.sh/weather?userLat=${userLat}&userLong=${userLong}&type=${"forecast"}`)
+  const api = await raw.json()
+  const { data } = api
+  console.log(data)
+  const today = new Date()
+  const day = today.getDay()
   const dayOfTheWeek = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"]
   todayMax.innerHTML = "↑ " + data.list[0].temp.max.toFixed(1) + "°"
   todayMin.innerHTML = "↓ " + data.list[0].temp.min.toFixed(1) + "°"
-  let forecastBox = document.getElementById("forecastBox")
+  const forecastBox = document.getElementById("forecastBox")
   for (let i = 1; i < 6; i++) {
-    let div = document.createElement("div")
+    const div = document.createElement("div")
     div.classList.add("dailyForecast")
-    let dayIcon = document.createElement("img")
-    let dayName = document.createElement("p")
+    const dayIcon = document.createElement("img")
+    const dayName = document.createElement("p")
     dayName.classList.add("dayName")
-    let dayMax = document.createElement("p")
+    const dayMax = document.createElement("p")
     dayMax.classList.add("dayMax")
-    let dayMin = document.createElement("p")
+    const dayMin = document.createElement("p")
     dayMin.classList.add("dayMin")
-    let iconRaw = data.list[i].weather[0].icon
-    let iconScr = IconFinder[iconRaw]
+    const iconRaw = data.list[i].weather[0].icon
+    const iconScr = IconFinder[iconRaw]
     iconScr =
       iconScr.slice(0, 19) +
       "forecastIcons/" +

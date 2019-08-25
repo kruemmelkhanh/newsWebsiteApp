@@ -1,13 +1,9 @@
 $(document).ready(function() {
-  /* our pretzel and default source and url */
-  let pretzels = "c90d69bab6e84e39ac36904e19c7fbdd";
-  let newsSource = "sources=bbc-news";
-  let url = `https://newsapi.org/v2/top-headlines?${newsSource}&apiKey=${pretzels}`;
-
   /* getting the news from the api with a url parameter */
-  const getNews = async function(url) {
-    let raw = await fetch(url);
-    let data = await raw.json();
+  const getNews = async function(newsSource) {
+    let raw = await fetch(`https://newswebsiteapp.xqwtsz.now.sh/news/${newsSource}`);
+    let api = await raw.json();
+    let { data } = api
     let newsCards = document.getElementById("headlines");
 
     // dealing with the current date
@@ -79,7 +75,7 @@ $(document).ready(function() {
     }
   };
 
-  getNews(url);
+  getNews("sources=bbc-news");
 
   /* sidebar code to show or hide the sidebar */
 
@@ -91,7 +87,7 @@ $(document).ready(function() {
   /* sidebar code to hide the sidebar when clicked on somewhere other than the sidebar or the hamburger icon */
 
   $("body,html").click(function(e) {
-    var container = $("#mySideBar");
+    const container = $("#mySideBar");
 
     if (!container.is(e.target) && container.has(e.target).length === 0) {
       container.removeClass("sidebarActive");
@@ -124,44 +120,37 @@ $(document).ready(function() {
       newsSource = "sources=bbc-news";
       topInfoText.text("World");
       topInfoIcon.attr("class", "fas fa-globe-americas");
-      url = `https://newsapi.org/v2/top-headlines?${newsSource}&apiKey=${pretzels}`;
-      getNews(url);
+      getNews(newsSource);
     } else if (clickedSource.includes("Sports")) {
       newsSource = "sources=bbc-sport";
       topInfoText.text("Sports");
       topInfoIcon.attr("class", "fas fa-basketball-ball");
-      url = `https://newsapi.org/v2/top-headlines?${newsSource}&apiKey=${pretzels}`;
-      getNews(url);
+      getNews(newsSource);
     } else if (clickedSource.includes("Business")) {
       newsSource = "sources=the-wall-street-journal";
       topInfoText.text("Business");
       topInfoIcon.attr("class", "fas fa-chart-bar");
-      url = `https://newsapi.org/v2/top-headlines?${newsSource}&apiKey=${pretzels}`;
-      getNews(url);
+      getNews(newsSource);
     } else if (clickedSource.includes("Tech")) {
       newsSource = "sources=wired";
       topInfoText.text("Tech");
       topInfoIcon.attr("class", "fas fa-microchip");
-      url = `https://newsapi.org/v2/top-headlines?${newsSource}&apiKey=${pretzels}`;
-      getNews(url);
+      getNews(newsSource);
     } else if (clickedSource.includes("Entertainment")) {
       newsSource = "sources=entertainment-weekly";
       topInfoText.text("Entertainment");
       topInfoIcon.attr("class", "fas fa-theater-masks");
-      url = `https://newsapi.org/v2/top-headlines?${newsSource}&apiKey=${pretzels}`;
-      getNews(url);
+      getNews(newsSource);
     } else if (clickedSource.includes("Health")) {
       newsSource = "sources=medical-news-today";
       topInfoText.text("Health");
       topInfoIcon.attr("class", "fas fa-heartbeat");
-      url = `https://newsapi.org/v2/top-headlines?${newsSource}&apiKey=${pretzels}`;
-      getNews(url);
+      getNews(newsSource);
     } else if (clickedSource.includes("Local")) {
       newsSource = "sources=die-zeit";
       topInfoText.text("Local");
       topInfoIcon.attr("class", "fas fa-map-marker-alt");
-      url = `https://newsapi.org/v2/top-headlines?${newsSource}&apiKey=${pretzels}`;
-      getNews(url);
+      getNews(newsSource);
     } else {
       console.log("Something is wrong.");
     }
